@@ -19,6 +19,8 @@ public abstract class Person {
         this.age = age;
         this.eMail = eMail;
     }
+
+    //Redundant?
     public String toString(){
         return name + age + eMail;
     }

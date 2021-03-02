@@ -14,11 +14,11 @@ public class HelpMenu {
 
         System.out.println("Välj från menyn med tangentbordet och avsluta med Enter:");
         String choice = null;
-        Scanner scChoice = new Scanner(System.in);
+        Scanner UserInputMenu = new Scanner(System.in);
 
 
         do {
-            choice = scChoice.nextLine();
+            choice = UserInputMenu.nextLine();
             switch (choice) {
                 case "1":
                     handleFile.showAllQuestions();
