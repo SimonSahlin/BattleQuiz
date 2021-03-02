@@ -47,7 +47,7 @@ public class Player extends Person {
             allRandomQuestions -= 1; //
         }
     }
-    
+
     //This method does ask the questions from the 6 randomized questions and stores answers in one LinkedList per player.
     public void gameProgress() { //Simon
         Scanner scanner = new Scanner(System.in);
