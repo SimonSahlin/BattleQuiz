@@ -17,12 +17,13 @@ public class QuestionSetup
     public void setUpQuestionList() throws IOException
     {
 
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Adam-\\OneDrive\\Dokument\\GitHub\\BattleQuiz\\src\\QuestionBank.txt"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Adam-\\IdeaProjects\\04JavaAvancerad\\BattleQuiz\\BattleQuiz\\src\\QuestionBank.txt"));
         bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
 
         for(String line : linesFromQuestionBank){
             String question = (line.substring(0, line.indexOf(":")));
             List <String> options = Arrays.asList(line.substring(line.indexOf(":")).split(","));
+            options.set(0, options.get(0).replaceFirst(":",""));
             QuestionBluePrint questionBlueprint = new QuestionBluePrint(question,options);
             questionList.add(questionBlueprint);
         }
