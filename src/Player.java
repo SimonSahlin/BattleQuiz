@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -15,8 +16,14 @@ public class Player extends Person {
     LinkedList<QuestionBluePrint> gameQuestions = new LinkedList();
     LinkedList<String> answerPlayer1 = new LinkedList();
     LinkedList<String> answerPlayer2 = new LinkedList();
+    LinkedList<String> cheatSheet = new LinkedList<>();
+    HashMap answerConverter = new HashMap();
 
-    private int score;
+
+
+    private int score; //<-- bort med skiten?
+    public int player1Score = 0;
+    public int player2Score = 0;
     private int counterPlayedGames;
 
     public Player() throws IOException, ClassNotFoundException {
@@ -67,6 +74,7 @@ public class Player extends Person {
                 //End timer
             }
                 for (int m = 0; m < 1; m++) {
+                    System.out.println((( gameQuestions.get(i+3)).question+"?"));
                     System.out.println("Spelare 2 svarar: "); //Prints which player that are gonna answer
                     System.out.print("| A. " + gameQuestions.get(i+3).options.get(0).replace("*","") + " |");; //Showing optionA
                     System.out.print(" B. " + gameQuestions.get(i+3).options.get(1).replace("*","") + " |");; //Showing optionA
@@ -79,17 +87,47 @@ public class Player extends Person {
                     //End timer
                 }
         }
-        System.out.println(answerPlayer1 + " " + answerPlayer2);
+        System.out.println("Spelare 1: " + answerPlayer1 + "\nSpelare 2: " + answerPlayer2);
+        trackScore();
+        System.out.println("Rätt svar - spelare 1: [ " + cheatSheet.get(0) + " " + cheatSheet.get(1) + " " + cheatSheet.get(2) + " ] " +  "\nRätt svar - Spelare 2: [ " + cheatSheet.get(3) + " " + cheatSheet.get(4) + " " + cheatSheet.get(5) + " ]");
+        System.out.println(player1Score + " " + player2Score);
     }
             //public void trackPlayedGames(){
 
             //}
 
-    public void trackScore(){
+    public void creatCheatSheet(){
+        answerConverter.put(0, "A");
+        answerConverter.put(1, "B");
+        answerConverter.put(2, "C");
+        answerConverter.put(3, "D");
 
-        if (answerPlayer1.get(0).equals("A") && ((QuestionBluePrint) gameQuestions.get(0)).options.get(0).contains("*")){
-               setScore(+1);
+        for (int i = 0; i<gameQuestions.size(); i++){
+            for (int j = 0; j<gameQuestions.get(i).options.size(); j++) {
+                if (gameQuestions.get(i).options.get(j).contains("*")) {
+                    String value = answerConverter.get(j).toString();
+                    cheatSheet.add(value);
+                }
+            }
+
         }
+
+    }
+
+    public void trackScore(){
+        creatCheatSheet();
+        for (int i = 0; i<3; i++){
+
+            if (cheatSheet.get(i).equals(answerPlayer1.get(i))){
+                player1Score += 1;
+            }
+
+            if (cheatSheet.get(i+3).equals(answerPlayer2.get(i))){
+                player2Score += 1;
+            }
+
+        }
+
 
     }
 
