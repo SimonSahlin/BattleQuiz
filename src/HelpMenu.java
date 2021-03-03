@@ -13,7 +13,7 @@ public class HelpMenu {
         System.out.println("0 - Go back to Main menu");
 
         System.out.println("Välj från menyn med tangentbordet och avsluta med Enter:");
-        String choice = null;
+        String choice;
         Scanner UserInputMenu = new Scanner(System.in);
 
 

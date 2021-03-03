@@ -12,6 +12,8 @@ public class HandleFile {
         QuestionSetup questionSetup = new QuestionSetup();
         questionSetup.setUpQuestionList();
         writeToSer(questionSetup.questionList);
+
+        System.out.println("successfully initiated questionbank från txt-file.");
     }
     public void writeToSer(Object toStore) throws IOException {
 
@@ -25,7 +27,7 @@ public class HandleFile {
         objectOutput.flush();
         objectOutput.close();
 
-        System.out.println("success with writing list to file");
+        //System.out.println("success with writing list to file");
 
 
     }
@@ -38,7 +40,7 @@ public class HandleFile {
         ListBluePrint listAfterDeSer = new ListBluePrint((LinkedList) objectInput.readObject());
 
 
-        System.out.println("succes in readBackser()");
+        //System.out.println("succes in readBackser()");
         // .questionList i enlighet med klassen ListBluePrint
         return listAfterDeSer.questionList1;
     }
@@ -54,19 +56,25 @@ public class HandleFile {
 
         System.out.println("mata in fråga");
         String q = sc.nextLine();
-        System.out.println("mata in svar A");
 
+        System.out.println("mata in svar A");
         String o1 = validateOption(sc.nextLine().toLowerCase().trim());
 
         System.out.println("mata in svar B");
         String o2 = validateOption(sc.nextLine().toLowerCase().trim());
 
+
         System.out.println("mata in svar C");
         String o3 = validateOption(sc.nextLine().toLowerCase().trim());
+
+        System.out.println("mata in svar D");
+        String o4 = validateOption(sc.nextLine().toLowerCase().trim());
+
 
         answerList.add(o1);
         answerList.add(o2);
         answerList.add(o3);
+        answerList.add(o4);
 
 
         // Här skapas ett fråge-Objekt från klassen QuestionBluePrint där vi tar in stringar från scannern.
@@ -108,7 +116,7 @@ public class HandleFile {
             return "*"+strOption ;
         }else if(validationAnswer.equals("n")){
             return strOption;
-        }else{return "NÅGOT ÄR FEL, DELETA DENNA FRÅGA OCH FÖRSÖK IGEN";
+        }else{return "Wrong validation input";
         }
 
     }
@@ -146,7 +154,7 @@ public class HandleFile {
         oos.flush();
         oos.close();
 
-        System.out.println("success with writing list to file after deleting question nr " + (NumberToRemove+1));
+        System.out.println("Successful with removal of question number  " + (NumberToRemove+1));
 
 
 
