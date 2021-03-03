@@ -15,6 +15,7 @@ public class QuestionBluePrint implements Serializable
 
     }
 
-
+    public QuestionBluePrint() {
+    }
 }
 

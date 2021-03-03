@@ -6,12 +6,14 @@ import java.util.Scanner;
 
 public class HandleFile {
     //väg till filen, ÄNDRA TILL ER LOKALA PLATS...
-    File f = new File("C:\\Users\\Adam-\\IdeaProjects\\04JavaAvancerad\\BattleQuiz\\BattleQuiz\\src\\q.ser");
+    File f = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuiz/BattleQuiz/src/q.ser");
 
     public void initSetUp() throws IOException {
         QuestionSetup questionSetup = new QuestionSetup();
         questionSetup.setUpQuestionList();
         writeToSer(questionSetup.questionList);
+
+        System.out.println("successfully initiated questionbank från txt-file.");
     }
     public void writeToSer(Object toStore) throws IOException {
 
@@ -25,7 +27,7 @@ public class HandleFile {
         objectOutput.flush();
         objectOutput.close();
 
-        System.out.println("success with writing list to file");
+        //System.out.println("success with writing list to file");
 
 
     }
@@ -38,13 +40,14 @@ public class HandleFile {
         ListBluePrint listAfterDeSer = new ListBluePrint((LinkedList) objectInput.readObject());
 
 
-        System.out.println("succes in getting object back :");
+        //System.out.println("succes in readBackser()");
         // .questionList i enlighet med klassen ListBluePrint
         return listAfterDeSer.questionList1;
     }
     public void addQuestion() throws IOException, ClassNotFoundException {
         // ny temporär linkedlist som hämtar  den sparade filens LinkedList.
         LinkedList tempLinkedList = readBackSer();
+
 
         LinkedList answerList = new LinkedList();
        // List<String> answerList = null;
@@ -53,35 +56,47 @@ public class HandleFile {
 
         System.out.println("mata in fråga");
         String q = sc.nextLine();
-        System.out.println("mata in svar A");
 
+        System.out.println("mata in svar A");
         String o1 = validateOption(sc.nextLine().toLowerCase().trim());
 
         System.out.println("mata in svar B");
         String o2 = validateOption(sc.nextLine().toLowerCase().trim());
 
+
         System.out.println("mata in svar C");
         String o3 = validateOption(sc.nextLine().toLowerCase().trim());
+
+        System.out.println("mata in svar D");
+        String o4 = validateOption(sc.nextLine().toLowerCase().trim());
+
 
         answerList.add(o1);
         answerList.add(o2);
         answerList.add(o3);
+        answerList.add(o4);
 
 
         // Här skapas ett fråge-Objekt från klassen QuestionBluePrint där vi tar in stringar från scannern.
         QuestionBluePrint newQuestion = new QuestionBluePrint(q, answerList);
 
+
         // lägger till den skapade frågan in i tempLinkedList,
+
         tempLinkedList.add(newQuestion);
+        System.out.println("added");
+       // System.out.println(tempLinkedList.getLast().toString());
 
         // Skapar ett Objekt av ListBluePrint (för att kunna serializera på nytt), där vi skickar med den gamla listan
         // med en adderad fråga.
-        ListBluePrint lbp2 = new ListBluePrint(tempLinkedList);
+        ListBluePrint listBluePrintToSave = new ListBluePrint(tempLinkedList);
+        //System.out.println(tempLinkedList);
+        //System.out.println(listBluePrintToSave.questionList1);
 
         //Skriver den nya listan till fil.
-        writeToSer(lbp2);
+       writeToSer(listBluePrintToSave.questionList1);
 
-         System.out.println("Du har lagt till frågan: " + newQuestion);
+         System.out.println("Du har lagt till frågan: " + newQuestion.question + newQuestion.options);
 
 
 
@@ -101,7 +116,7 @@ public class HandleFile {
             return "*"+strOption ;
         }else if(validationAnswer.equals("n")){
             return strOption;
-        }else{return "NÅGOT ÄR FEL, DELETA DENNA FRÅGA OCH FÖRSÖK IGEN";
+        }else{return "Wrong validation input";
         }
 
     }
@@ -135,24 +150,30 @@ public class HandleFile {
         FileOutputStream fos = new FileOutputStream(f);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-        oos.writeObject(tempBPL);
+        oos.writeObject(tempBPL.questionList1);
         oos.flush();
         oos.close();
 
-        System.out.println("success with writing list to file after deleting question nr " + (NumberToRemove+1));
+        System.out.println("Successful with removal of question number  " + (NumberToRemove+1));
 
 
 
     }
     public void showAllQuestions() throws IOException, ClassNotFoundException {
         // Läs upp alla rad för rad med indexering synligt
+
         LinkedList<QuestionBluePrint> tempListReadAll = readBackSer();
 
+
+
         for (int i = 0; i < tempListReadAll.size(); i++) {
-            System.out.println(i +1 + " " + tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
+
+            System.out.println(i +1 + " " +tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
+
         }
 
     }
+
 
 
 }

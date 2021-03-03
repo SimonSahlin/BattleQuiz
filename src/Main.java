@@ -4,6 +4,7 @@ import java.util.LinkedList;
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
+
         HandleFile hf = new HandleFile();
         Player player = new Player();
 
@@ -18,6 +19,10 @@ public class Main {
 
        //GameMenu gameMenu = new GameMenu();
        //gameMenu.mainMenu();
+
+
+        GameMenu gm = new GameMenu();
+        gm.mainMenu();
 
 
     }
