@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class HandleFile {
     //väg till filen, ÄNDRA TILL ER LOKALA PLATS...
-    File f = new File("C:\\Users\\Adam-\\OneDrive\\Dokument\\GitHub\\BattleQuiz\\src\\q.ser");
+    File f = new File("C:\\Users\\Adam-\\IdeaProjects\\04JavaAvancerad\\BattleQuiz\\BattleQuiz\\src\\q.ser");
 
     public void initSetUp() throws IOException {
         QuestionSetup questionSetup = new QuestionSetup();
@@ -146,10 +146,10 @@ public class HandleFile {
     }
     public void showAllQuestions() throws IOException, ClassNotFoundException {
         // Läs upp alla rad för rad med indexering synligt
-        LinkedList tempList = readBackSer();
+        LinkedList<QuestionBluePrint> tempListReadAll = readBackSer();
 
-        for (int i = 0; i < tempList.size(); i++) {
-            System.out.println(i +1 + " " + tempList.get(i));
+        for (int i = 0; i < tempListReadAll.size(); i++) {
+            System.out.println(i +1 + " " + tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
         }
 
     }

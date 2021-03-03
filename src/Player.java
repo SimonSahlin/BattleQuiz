@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class Player extends Person {
 
     HandleFile handleFile = new HandleFile();
-    LinkedList questionsFromSerFile = handleFile.readBackSer();
-    LinkedList gameQuestions = new LinkedList();
+    LinkedList<QuestionBluePrint> questionsFromSerFile = handleFile.readBackSer();
+    LinkedList<QuestionBluePrint> gameQuestions = new LinkedList();
     LinkedList<String> answerPlayer1 = new LinkedList();
     LinkedList<String> answerPlayer2 = new LinkedList();
 
@@ -54,19 +54,26 @@ public class Player extends Person {
         for (int i = 0; i < 3; i++) { //Loops 3 times, once for each question
             System.out.println("Här kommer fråga " + (i + 1)); //Print which question is asked(1,2,3,4...)
             //Start timer.
-            System.out.println(((QuestionBluePrint) gameQuestions.get(i)).question+"?"); //Asking said question.
-            System.out.println(((QuestionBluePrint) gameQuestions.get(i)).options.toString().replace("*", "")); //Showing options
+            System.out.println((( gameQuestions.get(i)).question+"?")); //Asking said question.
+            System.out.print("| A. " + gameQuestions.get(i).options.get(0).replace("*","") + " |");; //Showing optionA
+            System.out.print(" B. " + gameQuestions.get(i).options.get(1).replace("*","") + " |");; //Showing optionA
+            System.out.print(" C. " + gameQuestions.get(i).options.get(2).replace("*","") + " |");; //Showing optionA
+            System.out.println(" D. " + gameQuestions.get(i).options.get(3).replace("*","") + " |");; //Showing optionA
             //End timer.
             for (int j = 0; j < 1; j++) { //Loops 2 times for every once the upper loop loops.
-                System.out.println("Spelare " + (j + 1) + " svarar: "); //Prints which player that are gonna answer
+                System.out.println("Spelare 1 svarar: "); //Prints which player that are gonna answer
                 //Start timer
                 answerPlayer1.add(scanner.nextLine()); //Waiting for answer and stores it in a LinkedList called "answer".
                 //End timer
             }
                 for (int m = 0; m < 1; m++) {
-                    System.out.println("Spelare " + (m + 2) + " svarar: "); //Prints which player that are gonna answer
-                    System.out.println(((QuestionBluePrint) gameQuestions.get(i+3)).question+"?"); //Asking said question.
-                    System.out.println(((QuestionBluePrint) gameQuestions.get(i+3)).options.toString().replace("*", "")); //Showing options
+                    System.out.println("Spelare 2 svarar: "); //Prints which player that are gonna answer
+                    System.out.print("| A. " + gameQuestions.get(i+3).options.get(0).replace("*","") + " |");; //Showing optionA
+                    System.out.print(" B. " + gameQuestions.get(i+3).options.get(1).replace("*","") + " |");; //Showing optionA
+                    System.out.print(" C. " + gameQuestions.get(i+3).options.get(2).replace("*","") + " |");; //Showing optionA
+                    System.out.println(" D. " + gameQuestions.get(i+3).options.get(3).replace("*","") + " |");; //Showing optionA
+                    //System.out.println(((QuestionBluePrint) gameQuestions.get(i+3)).question+"?"); //Asking said question.
+                    //System.out.println(((QuestionBluePrint) gameQuestions.get(i+3)).options.toString().replace("*", "")); //Showing options
                     //Start timer
                     answerPlayer2.add(scanner.nextLine()); //Waiting for answer and stores it in a LinkedList called "answer".
                     //End timer
