@@ -37,6 +37,9 @@ public class HelpMenu {
                     handleFile.editQuestion();
                     break;
 
+                case "99":
+                    handleFile.initSetUp();
+
                 case "0":
 
                     break;
