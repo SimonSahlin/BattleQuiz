@@ -34,7 +34,10 @@ public class GameMenu {
                     System.out.println("Visa ScoreBoard");
                     break;
                 case "2":
-                    System.out.println("Spela Quizz");
+                    Player player = new Player();
+
+                    player.randomizeQuestions();
+                    player.gameProgress();
                     break;
                 case "3":
                     helpMenu.menu();

@@ -1,5 +1,5 @@
 import java.io.IOException;
-import java.util.LinkedList;
+
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -8,10 +8,7 @@ public class Main {
         gm.mainMenu();
 
 
-        Player player = new Player();
 
-        player.randomizeQuestions();
-        player.gameProgress();
 
 
     }
