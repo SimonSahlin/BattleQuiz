@@ -161,13 +161,15 @@ public class HandleFile {
     }
     public void showAllQuestions() throws IOException, ClassNotFoundException {
         // Läs upp alla rad för rad med indexering synligt
-        LinkedList <QuestionBluePrint> tempListReadAll = readBackSer();
+
+        LinkedList<QuestionBluePrint> tempListReadAll = readBackSer();
 
 
 
         for (int i = 0; i < tempListReadAll.size(); i++) {
 
             System.out.println(i +1 + " " +tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
+
         }
 
     }

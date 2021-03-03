@@ -23,6 +23,7 @@ public class QuestionSetup
         for(String line : linesFromQuestionBank){
             String question = (line.substring(0, line.indexOf(":")));
             List <String> options = Arrays.asList(line.substring(line.indexOf(":")).split(","));
+            options.set(0, options.get(0).replaceFirst(":",""));
             QuestionBluePrint questionBlueprint = new QuestionBluePrint(question,options);
             questionList.add(questionBlueprint);
         }
