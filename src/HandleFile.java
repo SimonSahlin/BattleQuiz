@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class HandleFile {
     //väg till filen, ÄNDRA TILL ER LOKALA PLATS...
-    File f = new File("C:\\Users\\Adam-\\OneDrive\\Dokument\\GitHub\\BattleQuiz\\src\\q.ser");
+    File f = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuiz/BattleQuiz/src/q.ser");
 
     public void initSetUp() throws IOException {
         QuestionSetup questionSetup = new QuestionSetup();
@@ -38,13 +38,14 @@ public class HandleFile {
         ListBluePrint listAfterDeSer = new ListBluePrint((LinkedList) objectInput.readObject());
 
 
-        System.out.println("succes in getting object back :");
+        System.out.println("succes in readBackser()");
         // .questionList i enlighet med klassen ListBluePrint
         return listAfterDeSer.questionList1;
     }
     public void addQuestion() throws IOException, ClassNotFoundException {
         // ny temporär linkedlist som hämtar  den sparade filens LinkedList.
         LinkedList tempLinkedList = readBackSer();
+
 
         LinkedList answerList = new LinkedList();
        // List<String> answerList = null;
@@ -71,17 +72,23 @@ public class HandleFile {
         // Här skapas ett fråge-Objekt från klassen QuestionBluePrint där vi tar in stringar från scannern.
         QuestionBluePrint newQuestion = new QuestionBluePrint(q, answerList);
 
+
         // lägger till den skapade frågan in i tempLinkedList,
+
         tempLinkedList.add(newQuestion);
+        System.out.println("added");
+       // System.out.println(tempLinkedList.getLast().toString());
 
         // Skapar ett Objekt av ListBluePrint (för att kunna serializera på nytt), där vi skickar med den gamla listan
         // med en adderad fråga.
-        ListBluePrint lbp2 = new ListBluePrint(tempLinkedList);
+        ListBluePrint listBluePrintToSave = new ListBluePrint(tempLinkedList);
+        //System.out.println(tempLinkedList);
+        //System.out.println(listBluePrintToSave.questionList1);
 
         //Skriver den nya listan till fil.
-        writeToSer(lbp2);
+       writeToSer(listBluePrintToSave.questionList1);
 
-         System.out.println("Du har lagt till frågan: " + newQuestion);
+         System.out.println("Du har lagt till frågan: " + newQuestion.question + newQuestion.options);
 
 
 
@@ -135,7 +142,7 @@ public class HandleFile {
         FileOutputStream fos = new FileOutputStream(f);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-        oos.writeObject(tempBPL);
+        oos.writeObject(tempBPL.questionList1);
         oos.flush();
         oos.close();
 
@@ -146,13 +153,17 @@ public class HandleFile {
     }
     public void showAllQuestions() throws IOException, ClassNotFoundException {
         // Läs upp alla rad för rad med indexering synligt
-        LinkedList tempList = readBackSer();
+        LinkedList <QuestionBluePrint> tempListReadAll = readBackSer();
 
-        for (int i = 0; i < tempList.size(); i++) {
-            System.out.println(i +1 + " " + tempList.get(i));
+
+
+        for (int i = 0; i < tempListReadAll.size(); i++) {
+
+            System.out.println(i +1 + " " +tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
         }
 
     }
+
 
 
 }

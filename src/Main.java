@@ -3,12 +3,18 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+        //HelpMenu hm = new HelpMenu();
+        //hm.menu();
 
-        //HandleFile hf = new HandleFile();
-        Player player = new Player();
+        HandleFile hf = new HandleFile();
+       // hf.addQuestion();
+        //hf.removeQuestion();
+         hf.showAllQuestions();
+         hf.initSetUp();
+        //Player player = new Player();
 
-        player.randomizeQuestions();
-        player.gameProgress();
+        //player.randomizeQuestions();
+        //player.gameProgress();
 
         //hf.initSetUp();
         //hf.readBackSer();

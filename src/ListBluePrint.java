@@ -7,6 +7,6 @@ public class ListBluePrint implements Serializable {
 
 
 
-    public ListBluePrint(LinkedList ql){
-        this.questionList1 = ql;}
+    public ListBluePrint(LinkedList questionList){
+        this.questionList1 = questionList;}
 }
