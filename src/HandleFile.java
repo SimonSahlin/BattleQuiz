@@ -122,7 +122,7 @@ public class HandleFile {
     }
     public void editQuestion() throws IOException, ClassNotFoundException {
         Scanner scEdit = new Scanner(System.in);
-        //LinkedList tempList = readBackSer();
+        LinkedList<QuestionBluePrint> tempList = readBackSer();
         System.out.println("vilken fråga vill du modifiera? (nr)");
 
 

@@ -39,7 +39,7 @@ public class HelpMenu {
 
                 case "99":
                     handleFile.initSetUp();
-
+                    break;
                 case "0":
 
                     break;
