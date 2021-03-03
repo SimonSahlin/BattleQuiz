@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class HandleFile {
     //väg till filen, ÄNDRA TILL ER LOKALA PLATS...
-    File f = new File("C:\\Users\\Adam-\\IdeaProjects\\04JavaAvancerad\\BattleQuiz\\BattleQuiz\\src\\q.ser");
+    File f = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuiz/BattleQuiz/src/q.ser");
 
     public void initSetUp() throws IOException {
         QuestionSetup questionSetup = new QuestionSetup();

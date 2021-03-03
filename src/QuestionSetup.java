@@ -17,7 +17,7 @@ public class QuestionSetup
     public void setUpQuestionList() throws IOException
     {
 
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Adam-\\IdeaProjects\\04JavaAvancerad\\BattleQuiz\\BattleQuiz\\src\\QuestionBank.txt"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuiz/BattleQuiz/src/QuestionBank.txt"));
         bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
 
         for(String line : linesFromQuestionBank){
