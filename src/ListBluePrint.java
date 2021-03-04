@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 
 public class ListBluePrint implements Serializable {
-    LinkedList questionList1;
+    LinkedList<QuestionBluePrint> questionList1;
 
 
 
