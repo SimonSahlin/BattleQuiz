@@ -41,16 +41,16 @@ public class HandleFile {
 
 
         //System.out.println("succes in readBackser()");
-        // .questionList i enlighet med klassen ListBluePrint
+        // .questionList1 i enlighet med klassen ListBluePrint
         return listAfterDeSer.questionList1;
     }
     public void addQuestion() throws IOException, ClassNotFoundException {
         // ny temporär linkedlist som hämtar  den sparade filens LinkedList.
-        LinkedList tempLinkedList = readBackSer();
+        LinkedList<QuestionBluePrint> tempLinkedList = readBackSer();
 
 
         LinkedList answerList = new LinkedList();
-       // List<String> answerList = null;
+
         // Scanner för att lägga in frågorna i enlighet med QuestionBluePrint-formatet.
         Scanner sc = new Scanner(System.in);
 
@@ -123,13 +123,69 @@ public class HandleFile {
     public void editQuestion() throws IOException, ClassNotFoundException {
         Scanner scEdit = new Scanner(System.in);
         LinkedList<QuestionBluePrint> tempList = readBackSer();
-        System.out.println("vilken fråga vill du modifiera? (nr)");
+        System.out.println("What question do you want to change (number)?");
 
 
         int numberToEdit = scEdit.nextInt()-1;
-       // System.out.println(
-        //tempList.get(numberToEdit));
-        System.out.println(" EJ KLAR MED DENNA BIT:::: FORTSÄTT");
+        System.out.println("You are about to edit question nr " + (numberToEdit +1) + ": " +
+                tempList.get(numberToEdit).question +"? "+ tempList.get(numberToEdit).options);
+
+        /////////
+
+        LinkedList answerList = new LinkedList();
+
+        // Scanner för att lägga in frågorna i enlighet med QuestionBluePrint-formatet.
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter question:");
+        String q = sc.nextLine();
+
+        System.out.println("Enter answer A");
+        String o1 = validateOption(sc.nextLine().toLowerCase().trim());
+
+        System.out.println("Enter answer B");
+        String o2 = validateOption(sc.nextLine().toLowerCase().trim());
+
+
+        System.out.println("Enter answer C");
+        String o3 = validateOption(sc.nextLine().toLowerCase().trim());
+
+        System.out.println("Enter answer D");
+        String o4 = validateOption(sc.nextLine().toLowerCase().trim());
+
+
+        answerList.add(o1);
+        answerList.add(o2);
+        answerList.add(o3);
+        answerList.add(o4);
+
+
+        // Här skapas ett fråge-Objekt från klassen QuestionBluePrint där vi tar in stringar från scannern.
+        QuestionBluePrint newQuestion = new QuestionBluePrint(q, answerList);
+
+
+        // lägger till den skapade frågan in i tempLinkedList,
+
+        tempList.add(numberToEdit, newQuestion);
+        System.out.println("Question number " + (numberToEdit + 1) + " is edited to :" + newQuestion.question + "? " + newQuestion.options + ".") ;
+
+
+        // Skapar ett Objekt av ListBluePrint (för att kunna serializera på nytt), där vi skickar med den gamla listan
+        // med en adderad fråga på rätt index-plats.
+        ListBluePrint listBluePrintToSave = new ListBluePrint(tempList);
+
+
+        //Skriver den nya listan till fil.
+        writeToSer(listBluePrintToSave.questionList1);
+
+      //  System.out.println("Du har lagt till frågan: " + newQuestion.question + newQuestion.options);
+
+        /////////
+
+
+
+
+
 
 
     }
@@ -156,9 +212,9 @@ public class HandleFile {
 
         System.out.println("Successful with removal of question number  " + (NumberToRemove+1));
 
-
-
     }
+
+
     public void showAllQuestions() throws IOException, ClassNotFoundException {
         // Läs upp alla rad för rad med indexering synligt
 
