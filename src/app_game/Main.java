@@ -1,3 +1,7 @@
+package app_game;
+
+import app_game.GameMenu;
+
 import java.io.IOException;
 
 

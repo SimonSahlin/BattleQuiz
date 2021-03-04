@@ -1,3 +1,5 @@
+package app_game;
+
 import java.io.*;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -6,7 +8,7 @@ import java.util.Scanner;
 
 public class HandleFile {
     //väg till filen, ÄNDRA TILL ER LOKALA PLATS...
-    File f = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuiz/BattleQuiz/src/q.ser");
+    File f = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuiz/BattleQuiz/game_files/q.ser");
 
     public void initSetUp() throws IOException {
         QuestionSetup questionSetup = new QuestionSetup();
@@ -36,12 +38,12 @@ public class HandleFile {
         FileInputStream fileInput = new FileInputStream(f);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 
-        //Måste hämtas ut i samma format som den skickas in, enligt ListBluePrint
+        //Måste hämtas ut i samma format som den skickas in, enligt app_game.ListBluePrint
         ListBluePrint listAfterDeSer = new ListBluePrint((LinkedList) objectInput.readObject());
 
 
         //System.out.println("succes in readBackser()");
-        // .questionList1 i enlighet med klassen ListBluePrint
+        // .questionList1 i enlighet med klassen app_game.ListBluePrint
         return listAfterDeSer.questionList1;
     }
     public void addQuestion() throws IOException, ClassNotFoundException {
@@ -51,7 +53,7 @@ public class HandleFile {
 
         LinkedList answerList = new LinkedList();
 
-        // Scanner för att lägga in frågorna i enlighet med QuestionBluePrint-formatet.
+        // Scanner för att lägga in frågorna i enlighet med app_game.QuestionBluePrint-formatet.
         Scanner sc = new Scanner(System.in);
 
         System.out.println("mata in fråga");
@@ -77,7 +79,7 @@ public class HandleFile {
         answerList.add(o4);
 
 
-        // Här skapas ett fråge-Objekt från klassen QuestionBluePrint där vi tar in stringar från scannern.
+        // Här skapas ett fråge-Objekt från klassen app_game.QuestionBluePrint där vi tar in stringar från scannern.
         QuestionBluePrint newQuestion = new QuestionBluePrint(q, answerList);
 
 
@@ -87,7 +89,7 @@ public class HandleFile {
         System.out.println("added");
        // System.out.println(tempLinkedList.getLast().toString());
 
-        // Skapar ett Objekt av ListBluePrint (för att kunna serializera på nytt), där vi skickar med den gamla listan
+        // Skapar ett Objekt av app_game.ListBluePrint (för att kunna serializera på nytt), där vi skickar med den gamla listan
         // med en adderad fråga.
         ListBluePrint listBluePrintToSave = new ListBluePrint(tempLinkedList);
         //System.out.println(tempLinkedList);
@@ -136,7 +138,7 @@ public class HandleFile {
 
         LinkedList answerList = new LinkedList();
 
-        // Scanner för att lägga in frågorna i enlighet med QuestionBluePrint-formatet.
+        // Scanner för att lägga in frågorna i enlighet med app_game.QuestionBluePrint-formatet.
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter question:");
@@ -162,7 +164,7 @@ public class HandleFile {
         answerList.add(o4);
 
 
-        // Här skapas ett fråge-Objekt från klassen QuestionBluePrint där vi tar in stringar från scannern.
+        // Här skapas ett fråge-Objekt från klassen app_game.QuestionBluePrint där vi tar in stringar från scannern.
                     //3 Create a new question-object to store scanned info in.
         QuestionBluePrint newQuestion = new QuestionBluePrint(q, answerList);
 
@@ -175,7 +177,7 @@ public class HandleFile {
         System.out.println("Question number " + (numberToEdit + 1) + " is edited to :" + newQuestion.question + "? " + newQuestion.options + ".") ;
 
 
-        // Skapar ett Objekt av ListBluePrint (för att kunna serializera på nytt), där vi skickar med den gamla listan
+        // Skapar ett Objekt av app_game.ListBluePrint (för att kunna serializera på nytt), där vi skickar med den gamla listan
         // med en adderad fråga på rätt index-plats.
                 // 6 Create object for serialization and fill it with the edited linkedlist AND save it.
         ListBluePrint listBluePrintToSave = new ListBluePrint(tempList);

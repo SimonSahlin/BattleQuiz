@@ -10,10 +10,10 @@ Ni ska skapa en klass som håller reda på frågor, svarsalternativ och vilket
 svarsalternativ som är rätt. Den ska också innehålla en metod som ska läsa in
 de serialiserade frågeobjekten från en fil.
 
-Ni ska skapa den apstrakta klassen Person som ska innehålla en persons namn,
+Ni ska skapa den apstrakta klassen app_game.Person som ska innehålla en persons namn,
 ålder och epost.
 
-Ni ska implementera den konkreta klassen Player som extendar Person och lägger
+Ni ska implementera den konkreta klassen app_game.Player som extendar app_game.Person och lägger
 till hantering av variablerna score och played_games. Varje gång spelaren spelar
 ett spel ska played_games ökas på med 1 och om användaren vinner matchen ska score
 ökas med 1.
