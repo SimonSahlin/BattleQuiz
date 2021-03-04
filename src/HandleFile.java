@@ -99,10 +99,6 @@ public class HandleFile {
          System.out.println("Du har lagt till frågan: " + newQuestion.question + newQuestion.options);
 
 
-
-
-
-
         //öppna lägg till spara printa
 
     }
@@ -121,16 +117,22 @@ public class HandleFile {
 
     }
     public void editQuestion() throws IOException, ClassNotFoundException {
+        //1 LÄS IN LIST FRÅN SER
+        //2 POCKA UT VALD INDEX
+        //3 SKAPA EN NY FRÅGA
+        //4 RADERA VALT INDEX
+        //5 LÄGG IN FRÅGA I SAMMA INDEX
+        //6 SPARA PÅ FIL
         Scanner scEdit = new Scanner(System.in);
+                //1 Read questions from .ser
         LinkedList<QuestionBluePrint> tempList = readBackSer();
         System.out.println("What question do you want to change (number)?");
 
-
+                // 2 pick index to edit
         int numberToEdit = scEdit.nextInt()-1;
         System.out.println("You are about to edit question nr " + (numberToEdit +1) + ": " +
                 tempList.get(numberToEdit).question +"? "+ tempList.get(numberToEdit).options);
 
-        /////////
 
         LinkedList answerList = new LinkedList();
 
@@ -161,17 +163,21 @@ public class HandleFile {
 
 
         // Här skapas ett fråge-Objekt från klassen QuestionBluePrint där vi tar in stringar från scannern.
+                    //3 Create a new question-object to store scanned info in.
         QuestionBluePrint newQuestion = new QuestionBluePrint(q, answerList);
 
+                    //4 Remove previous question at this index.
+        tempList.remove(numberToEdit);
 
         // lägger till den skapade frågan in i tempLinkedList,
-
+                    // 5 Add the edited question in the same index-position as the deleted one.
         tempList.add(numberToEdit, newQuestion);
         System.out.println("Question number " + (numberToEdit + 1) + " is edited to :" + newQuestion.question + "? " + newQuestion.options + ".") ;
 
 
         // Skapar ett Objekt av ListBluePrint (för att kunna serializera på nytt), där vi skickar med den gamla listan
         // med en adderad fråga på rätt index-plats.
+                // 6 Create object for serialization and fill it with the edited linkedlist AND save it.
         ListBluePrint listBluePrintToSave = new ListBluePrint(tempList);
 
 
