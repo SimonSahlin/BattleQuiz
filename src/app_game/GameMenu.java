@@ -1,3 +1,5 @@
+package app_game;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -18,7 +20,7 @@ public class GameMenu {
         System.out.println("--  MENU --");
         System.out.println("1 - Show score board");
         System.out.println("2 - Play QuizzGame");
-        System.out.println("3 - HelpMenu");
+        System.out.println("3 - Help Menu");
         System.out.println("0 - Exit program");
         System.out.println("Välj från menyn med tangentbordet och avsluta med Enter:");
 

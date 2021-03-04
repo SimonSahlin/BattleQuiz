@@ -1,3 +1,5 @@
+package app_game;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,7 +19,7 @@ public class QuestionSetup
     public void setUpQuestionList() throws IOException
     {
 
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuiz/BattleQuiz/src/QuestionBank.txt"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuiz/BattleQuiz/game_files/QuestionBank.txt"));
         bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
 
         for(String line : linesFromQuestionBank){
