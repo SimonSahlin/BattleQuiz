@@ -31,7 +31,7 @@ public class HandleFile {
 
 
     }
-    public LinkedList readBackSer() throws IOException, ClassNotFoundException {
+    public LinkedList<QuestionBluePrint> readBackSer() throws IOException, ClassNotFoundException {
 
         FileInputStream fileInput = new FileInputStream(f);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
@@ -219,8 +219,6 @@ public class HandleFile {
         System.out.println("Successful with removal of question number  " + (NumberToRemove+1));
 
     }
-
-
     public void showAllQuestions() throws IOException, ClassNotFoundException {
         // Läs upp alla rad för rad med indexering synligt
 
