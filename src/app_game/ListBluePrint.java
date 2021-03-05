@@ -11,4 +11,7 @@ public class ListBluePrint implements Serializable {
 
     public ListBluePrint(LinkedList questionList){
         this.questionList1 = questionList;}
+
+
+
 }
