@@ -1,9 +1,11 @@
+package app_game;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-/*Ni ska implementera den konkreta klassen Player som extendar Person och lägger
+/*Ni ska implementera den konkreta klassen app_game.Player som extendar app_game.Person och lägger
         till hantering av variablerna score och played_games. Varje gång spelaren spelar
         ett spel ska played_games ökas på med 1 och om användaren vinner matchen ska score
         ökas med 1.
@@ -11,9 +13,9 @@ import java.util.Scanner;
  */
 public class Player extends Person {
 
-    HandleFile handleFile = new HandleFile();
-    LinkedList<QuestionBluePrint> questionsFromSerFile = handleFile.readBackSer();
-    LinkedList<QuestionBluePrint> gameQuestions = new LinkedList();
+    QuestionHandler questionHandler = new QuestionHandler();
+    LinkedList<QuestionHandler> questionsFromSerFile = questionHandler.readBackSer();
+    LinkedList<QuestionHandler> gameQuestions = new LinkedList();
     LinkedList<String> answerPlayer1 = new LinkedList();
     LinkedList<String> answerPlayer2 = new LinkedList();
     LinkedList<String> cheatSheet = new LinkedList<>();
@@ -80,8 +82,8 @@ public class Player extends Person {
                     System.out.print(" B. " + gameQuestions.get(i+3).options.get(1).replace("*","") + " |");; //Showing optionA
                     System.out.print(" C. " + gameQuestions.get(i+3).options.get(2).replace("*","") + " |");; //Showing optionA
                     System.out.println(" D. " + gameQuestions.get(i+3).options.get(3).replace("*","") + " |");; //Showing optionA
-                    //System.out.println(((QuestionBluePrint) gameQuestions.get(i+3)).question+"?"); //Asking said question.
-                    //System.out.println(((QuestionBluePrint) gameQuestions.get(i+3)).options.toString().replace("*", "")); //Showing options
+                    //System.out.println(((app_game.QuestionBluePrint) gameQuestions.get(i+3)).question+"?"); //Asking said question.
+                    //System.out.println(((app_game.QuestionBluePrint) gameQuestions.get(i+3)).options.toString().replace("*", "")); //Showing options
                     //Start timer
                     answerPlayer2.add(scanner.nextLine()); //Waiting for answer and stores it in a LinkedList called "answer".
                     //End timer

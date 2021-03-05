@@ -1,5 +1,6 @@
+package app_game;
 /*
-Ni ska skapa den apstrakta klassen Person som ska innehålla en persons namn,
+Ni ska skapa den apstrakta klassen app_game.Person som ska innehålla en persons namn,
         ålder och epost.
  */
 

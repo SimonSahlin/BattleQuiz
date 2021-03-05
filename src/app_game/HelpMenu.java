@@ -1,8 +1,10 @@
+package app_game;
+
 import java.io.IOException;
 import java.util.Scanner;
 
 public class HelpMenu {
-    HandleFile handleFile = new HandleFile();
+    QuestionHandler questionHandler = new QuestionHandler();
 
     public void menu() throws IOException, ClassNotFoundException {
         System.out.println("-- HELP MENU --");
@@ -10,7 +12,7 @@ public class HelpMenu {
         System.out.println("2 - Add question");
         System.out.println("3 - Remove question");
         System.out.println("4 - Edit question");
-        System.out.println("0 - Go back to Main menu");
+        System.out.println("0 - Go back to app_game.Main menu");
 
         System.out.println("Välj från menyn med tangentbordet och avsluta med Enter:");
         String choice;
@@ -21,24 +23,24 @@ public class HelpMenu {
             choice = UserInputMenu.nextLine();
             switch (choice) {
                 case "1":
-                    handleFile.showAllQuestions();
+                    questionHandler.showAllQuestions();
                     break;
 
                 case "2":
-                    handleFile.addQuestion();
+                    questionHandler.addQuestion();
 
                     break;
 
                 case "3":
-                    handleFile.removeQuestion();
+                    questionHandler.removeQuestion();
                     break;
 
                 case "4":
-                    handleFile.editQuestion();
+                    questionHandler.editQuestion();
                     break;
 
                 case "99":
-                    handleFile.initSetUp();
+                    questionHandler.resetQuestionsFromTextFile();
                     break;
                 case "0":
 
