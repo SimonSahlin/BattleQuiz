@@ -13,9 +13,9 @@ import java.util.Scanner;
  */
 public class Player extends Person {
 
-    HandleFile handleFile = new HandleFile();
-    LinkedList<QuestionBluePrint> questionsFromSerFile = handleFile.readBackSer();
-    LinkedList<QuestionBluePrint> gameQuestions = new LinkedList();
+    QuestionHandler questionHandler = new QuestionHandler();
+    LinkedList<QuestionHandler> questionsFromSerFile = questionHandler.readBackSer();
+    LinkedList<QuestionHandler> gameQuestions = new LinkedList();
     LinkedList<String> answerPlayer1 = new LinkedList();
     LinkedList<String> answerPlayer2 = new LinkedList();
     LinkedList<String> cheatSheet = new LinkedList<>();
