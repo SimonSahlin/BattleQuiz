@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class tmp_Time {
-
+/*
 
     public void gameHasFinished() throws IOException, ClassNotFoundException {
         String endOfGameChoice;
@@ -42,6 +42,6 @@ public class tmp_Time {
         }while(!endOfGameChoice.equals("0"));
     }
 
-
+*/
 
 }
