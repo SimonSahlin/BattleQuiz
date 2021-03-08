@@ -61,42 +61,36 @@ public class Player extends Person {
     public void gameProgress() { //Simon
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 3; i++) { //Loops 3 times, once for each question
+            char optionLetter = 'A';
             System.out.println("Här kommer fråga " + (i + 1)); //Print which question is asked(1,2,3,4...)
-            //Start timer.
             System.out.println((( gameQuestions.get(i)).question+"?")); //Asking said question.
-            System.out.print("| A. " + gameQuestions.get(i).options.get(0).replace("*","") + " |");; //Showing optionA
-            System.out.print(" B. " + gameQuestions.get(i).options.get(1).replace("*","") + " |");; //Showing optionA
-            System.out.print(" C. " + gameQuestions.get(i).options.get(2).replace("*","") + " |");; //Showing optionA
-            System.out.println(" D. " + gameQuestions.get(i).options.get(3).replace("*","") + " |");; //Showing optionA
-            //End timer.
+            for (int n = 0; n < 4; n++){
+                System.out.println(optionLetter++ + ". " + gameQuestions.get(i).options.get(n).replace("*","")); //Showing optionA, B, C & D
+            }
             for (int j = 0; j < 1; j++) { //Loops 2 times for every once the upper loop loops.
                 System.out.println("Spelare 1 svarar: "); //Prints which player that are gonna answer
                 //Start timer
                 answerPlayer1.add(scanner.nextLine()); //Waiting for answer and stores it in a LinkedList called "answer".
                 //End timer
             }
-                for (int m = 0; m < 1; m++) {
-                    System.out.println((( gameQuestions.get(i+3)).question+"?"));
-                    System.out.println("Spelare 2 svarar: "); //Prints which player that are gonna answer
-                    System.out.print("| A. " + gameQuestions.get(i+3).options.get(0).replace("*","") + " |");; //Showing optionA
-                    System.out.print(" B. " + gameQuestions.get(i+3).options.get(1).replace("*","") + " |");; //Showing optionA
-                    System.out.print(" C. " + gameQuestions.get(i+3).options.get(2).replace("*","") + " |");; //Showing optionA
-                    System.out.println(" D. " + gameQuestions.get(i+3).options.get(3).replace("*","") + " |");; //Showing optionA
-                    //System.out.println(((app_game.QuestionBluePrint) gameQuestions.get(i+3)).question+"?"); //Asking said question.
-                    //System.out.println(((app_game.QuestionBluePrint) gameQuestions.get(i+3)).options.toString().replace("*", "")); //Showing options
-                    //Start timer
-                    answerPlayer2.add(scanner.nextLine()); //Waiting for answer and stores it in a LinkedList called "answer".
-                    //End timer
+            for (int m = 0; m < 1; m++) {
+                optionLetter = 'A';
+                System.out.println((( gameQuestions.get(i+3)).question+"?"));
+                for(int k = 0; k < 4; k++){
+                    System.out.println(optionLetter++ + ". " + gameQuestions.get(i+3).options.get(k).replace("*","")); //Showing optionA, B, C & D
                 }
+                System.out.println("Spelare 2 svarar: "); //Prints which player that are gonna answer
+                //Start timer
+                answerPlayer2.add(scanner.nextLine()); //Waiting for answer and stores it in a LinkedList called "answer".
+                //End timer
+            }
         }
         System.out.println("Spelare 1: " + answerPlayer1 + "\nSpelare 2: " + answerPlayer2);
         trackScore();
         System.out.println("Rätt svar - spelare 1: [ " + cheatSheet.get(0) + " " + cheatSheet.get(1) + " " + cheatSheet.get(2) + " ] " +  "\nRätt svar - Spelare 2: [ " + cheatSheet.get(3) + " " + cheatSheet.get(4) + " " + cheatSheet.get(5) + " ]");
         System.out.println(player1Score + " " + player2Score);
     }
-            //public void trackPlayedGames(){
 
-            //}
 
     public void creatCheatSheet(){
         answerConverter.put(0, "A");
