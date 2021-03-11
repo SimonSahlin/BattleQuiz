@@ -30,14 +30,13 @@ public class Game_launch {
                     guidePrint.mainMenuMini();
                     break;
                 case "2":
-                    Player player = new Player();
-
-                    player.randomizeQuestions();
-                    player.gameProgress();
+                    GameEngine game = new GameEngine();
+                    game.randomizeQuestions();
+                    game.gameProgress();
                     guidePrint.mainMenuMini();
                     break;
                 case "3":
-                    // Help menu: //
+                    ////// Help menu: ///////
                     guidePrint.helpMenuFull();
                     String choiceHelp;
                     Scanner scChoiceHelp = new Scanner(System.in);

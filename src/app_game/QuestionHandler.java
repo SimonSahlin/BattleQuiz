@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class QuestionHandler implements Serializable {
     // PATHS:
     // change to your local absolutepath [serFile -> q.ser], [pathQuestionTextFile -> QuestionBank.txt].
-    File serFile = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\q.ser");
-    String pathQuestionTextFile ="C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\QuestionBank.txt";
+    File serFile = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/q.ser");
+    String pathQuestionTextFile ="/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/QuestionBank.txt";
 
                 // VARIABLES
     LinkedList<QuestionHandler> questionList1;
