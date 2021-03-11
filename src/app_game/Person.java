@@ -26,6 +26,6 @@ public abstract class Person {
         return name + age + eMail;
     }
 
-
+    public String getName(){return name;}
 }
 
