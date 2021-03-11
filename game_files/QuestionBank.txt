@@ -1,5 +1,5 @@
 Who is the oldest in the group:*Robin,Omar,Adam,Simon
-AWho can fly a plane in the group:dam,*Robin,Peter,Non of the members
+Who can fly a plane in the group:Adam,*Robin,Peter,Non of the members
 What is the highest number of HP a member has in the group:*351,400,573,192
 How many members is there in the group:3,*5,7,4
 Among all the members in the group, how many children does they have in total:*1,4,3,6
