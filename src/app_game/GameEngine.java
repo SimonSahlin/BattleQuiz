@@ -142,6 +142,8 @@ public class GameEngine {
 
     }
 
+
+
     public void creatCheatSheet() {
         answerConverter.put(0, "A");
         answerConverter.put(1, "B");

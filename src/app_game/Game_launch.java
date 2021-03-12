@@ -12,7 +12,8 @@ public class Game_launch {
 
 
         /////////////TEST AREA ///////////////////////
-
+        Player player = new Player();
+            player.test1();
 
 
         ////////////////////////// PROGRAM /////////

@@ -10,9 +10,7 @@ public abstract class Person {
     private int age;
     private String eMail;
 
-    public Person(){
 
-    }
 
 
     public Person(String name, int age, String eMail){
@@ -20,12 +18,25 @@ public abstract class Person {
         this.age = age;
         this.eMail = eMail;
     }
+    public Person(){}
 
-    //Redundant?
-    public String toString(){
-        return name + age + eMail;
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", eMail='" + eMail + '\'' +
+                '}';
     }
 
     public String getName(){return name;}
+
+    public int getAge() {
+        return age;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
 }
 
