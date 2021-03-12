@@ -36,6 +36,7 @@ public class QuestionHandler implements Serializable {
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(pathQuestionTextFile));
         bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
+        // bufferedReader.lines().forEach(linesFromQuestionBank::addLast); SAMMA SOM OVAN MEN MED METODREFERENS, OM VI VILL.
 
         for(String line : linesFromQuestionBank){
             String question = (line.substring(0, line.indexOf(":")));
@@ -124,12 +125,18 @@ public class QuestionHandler implements Serializable {
         LinkedList<QuestionHandler> tempList = readBackSer();
 
         System.out.println("Which question do you want to remove? (number from list of questions)");
-        int NumberToRemove = scRemove.nextInt()-1;
-        tempList.remove(NumberToRemove);
 
-        //Write modified list to ser-file again.
-        writeToSer(tempList);
-        System.out.println("Successful with removal of question number  " + (NumberToRemove+1));
+        try {
+            int NumberToRemove = scRemove.nextInt() - 1;
+            tempList.remove(NumberToRemove);
+
+            //Write modified list to ser-file again.
+            writeToSer(tempList);
+            System.out.println("Successful with removal of question number  " + (NumberToRemove + 1));
+        }catch(Exception e){
+            System.out.println("Enter a valid number..\n");
+            removeQuestion();
+        }
 
     }
     public void editQuestion() throws IOException, ClassNotFoundException {
@@ -138,40 +145,45 @@ public class QuestionHandler implements Serializable {
         LinkedList<QuestionHandler> tempList = readBackSer();
         System.out.println("What question do you want to change (number)?");
 
-        // 2 pick index to edit
-        int numberToEdit = scEdit.nextInt()-1;
-        System.out.println("You are about to edit question nr " + (numberToEdit +1) + ": " +
-                tempList.get(numberToEdit).question +"? "+ tempList.get(numberToEdit).options);
+        try {
+            // 2 pick index to edit
+            int numberToEdit = scEdit.nextInt() - 1;
+            System.out.println("You are about to edit question nr " + (numberToEdit + 1) + ": " +
+                    tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options);
 
 
-        LinkedList answerList = new LinkedList();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter question:");
-        String q = sc.nextLine();
-        System.out.println("Enter answer A");
-        String answer1 = validateOption(sc.nextLine().toLowerCase().trim());
-        System.out.println("Enter answer B");
-        String answer2 = validateOption(sc.nextLine().toLowerCase().trim());
-        System.out.println("Enter answer C");
-        String answer3 = validateOption(sc.nextLine().toLowerCase().trim());
-        System.out.println("Enter answer D");
-        String answer4 = validateOption(sc.nextLine().toLowerCase().trim());
+            LinkedList answerList = new LinkedList();
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter question:");
+            String q = sc.nextLine();
+            System.out.println("Enter answer A");
+            String answer1 = validateOption(sc.nextLine().toLowerCase().trim());
+            System.out.println("Enter answer B");
+            String answer2 = validateOption(sc.nextLine().toLowerCase().trim());
+            System.out.println("Enter answer C");
+            String answer3 = validateOption(sc.nextLine().toLowerCase().trim());
+            System.out.println("Enter answer D");
+            String answer4 = validateOption(sc.nextLine().toLowerCase().trim());
 
 
-        answerList.add(answer1);
-        answerList.add(answer2);
-        answerList.add(answer3);
-        answerList.add(answer4);
+            answerList.add(answer1);
+            answerList.add(answer2);
+            answerList.add(answer3);
+            answerList.add(answer4);
 
-        //4 Remove previous question at this index.
-        tempList.remove(numberToEdit);
+            //4 Remove previous question at this index.
+            tempList.remove(numberToEdit);
 
-        // 5 Add the edited(new) question in the same index-position as the deleted one(old one).
-        tempList.add(numberToEdit, new QuestionHandler(q,answerList));
+            // 5 Add the edited(new) question in the same index-position as the deleted one(old one).
+            tempList.add(numberToEdit, new QuestionHandler(q, answerList));
 
-        // 6 Write modified list to ser-file
-        System.out.println("Question number " + (numberToEdit + 1) + " is edited to :" + tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options + ".") ;
-        writeToSer(tempList);
+            // 6 Write modified list to ser-file
+            System.out.println("Question number " + (numberToEdit + 1) + " is edited to :" + tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options + ".");
+            writeToSer(tempList);
+        }catch (Exception e){
+            System.out.println("Enter a valid question number\n");
+            editQuestion();
+        }
     }
 
 
