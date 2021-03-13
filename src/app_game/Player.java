@@ -116,7 +116,7 @@ public class Player extends Person implements Serializable {
         tempList.clear();
         writePlayerListToSer(tempList);
     } // COMPLETE
-    /////////////// IN PROGRESS ////////////////
+    /////////////// IN PROGRESS blw////////////////
     public Player validateIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
         boolean isInTheList = false;
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
@@ -140,7 +140,7 @@ public class Player extends Person implements Serializable {
         }
         return player;
     } // NOT COMPLETE
-    /////////////// IN PROGRESS ////////////////
+    /////////////// IN PROGRESS above////////////////
 
     ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
     public void testResetPlayerrecordForDevPurposes() throws IOException, ClassNotFoundException {
@@ -165,11 +165,7 @@ public class Player extends Person implements Serializable {
         //clearPlayerRecord();
 
 
-
-
-
-
     }
-    ///////// TEST OF DIFF METHODS INSIDE METHOD BELOW WHICH RUNS AS FIRST METHOD IN MAIN ///////////
+
 
 }
