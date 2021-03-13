@@ -50,10 +50,15 @@ public class GameEngine {
     public void gameProgress() throws IOException, ClassNotFoundException { //Simon
         String restart= "Y";
         Scanner scanner = new Scanner(System.in);
+        ///////////////TEST IN PROGRESS ///////////////////////
+        Player p = new Player();
 
+
+        ///////////////TEST IN PROGRESS ///////////////////////
 
         System.out.println("Type in info about player 1");
-        player1 = newPlayer();
+        player1 =  newPlayer();
+        p.checkIfInTheRecord(player1);
         System.out.println("Succesfully added info about player 1");
         System.out.println("Type in info about player 2");
         player2 = newPlayer();
@@ -118,7 +123,7 @@ public class GameEngine {
 
     }
 
-    public static Player newPlayer() throws IOException, ClassNotFoundException {
+    public static Player newPlayer(){
         //PlayerNumber is what player number is being printed for user and being "created"
 
         //PlayerNumber is what player number is being printed for user and being "created"

@@ -16,7 +16,7 @@ public class Player extends Person implements Serializable {
     // change to your local absolutepath [serFile -> StoredPlayers.ser].
     File playerSerFile = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/StoredPlayers.ser");
 
-    LinkedList<Player> playerlistlist;
+    LinkedList<Player> playerLinkedList;
 
 
 
@@ -29,14 +29,14 @@ public class Player extends Person implements Serializable {
     private int counterPlayedGames;
 
     public Player() {}
-    public Player(LinkedList playerlistlist){
-
-        this.playerlistlist = playerlistlist;}
+    public Player(LinkedList playerList){
+        this.playerLinkedList = playerList;}
     public Player(String name, int age, String eMail, int score, int played_games){
         super(name, age, eMail);
         this.score = score;
         this.counterPlayedGames = played_games;
     }
+
 
 
 
@@ -162,99 +162,74 @@ public class Player extends Person implements Serializable {
         Player listAfterDeSer = new Player((LinkedList) objectInput.readObject());
 
 
-        return  listAfterDeSer.playerlistlist;
+        return  listAfterDeSer.playerLinkedList;
         //
         //obj1.playerlistlist;
     }
-    /*
-    public void addQuestion() throws IOException, ClassNotFoundException {
-        // New temp. linkedList to store info from q.ser(readBackser)
-        LinkedList<QuestionHandler> tempLinkedList = readBackSer();
 
-        LinkedList answerList = new LinkedList();
+    public void addPlayer(Player player) throws IOException, ClassNotFoundException {
+        // New temporary linkedList to store info fråm serfile
+        LinkedList<Player> tempLinkedList = readPlayerListFromSer();
+        tempLinkedList.add(player);
+        writePlayerListToSer(tempLinkedList);
 
-        // Scanner to insert new question.
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter new Question:");
-        String q = sc.nextLine();
-        System.out.println("Enter answer A:");
-        String answer1 = validateOption(sc.nextLine().toLowerCase().trim());
-        System.out.println("Enter answer B:");
-        String answer2 = validateOption(sc.nextLine().toLowerCase().trim());
-        System.out.println("Enter answer C:");
-        String answer3 = validateOption(sc.nextLine().toLowerCase().trim());
-        System.out.println("Enter answer D:");
-        String answer4 = validateOption(sc.nextLine().toLowerCase().trim());
-
-        // adding answers to list
-        answerList.add(answer1);
-        answerList.add(answer2);
-        answerList.add(answer3);
-        answerList.add(answer4);
-
-        // Add the new question to templinkedlist
-        tempLinkedList.add(new QuestionHandler(q, answerList));
-
-        //Write the modified list back to q.ser.
-        writeToSer(tempLinkedList);
-
-        System.out.println("Question added: " + tempLinkedList.getLast().question + tempLinkedList.getLast().options);
+        //System.out.println("Question added: " + tempLinkedList.getLast().question + tempLinkedList.getLast().options);
     }
-    public String validateOption(String strOption){
-        System.out.println("Is this the correct option? - Answer with 'y' or 'n' ( YES or NO)");
-        Scanner scValidate = new Scanner(System.in);
+    public void checkIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
+        LinkedList<Player> tempLinkedList = readPlayerListFromSer();
+        for (int i = 0; i < tempLinkedList.size(); i++) {
+            if (tempLinkedList.get(i).getName().equals(player.getName())){
+                System.out.println("FINNS I SYSTEMET");
 
-        String validationAnswer = scValidate.next().toLowerCase();
+            }else if(!tempLinkedList.get(i).getName().equals(player.getName())){
+                //addPlayer(player);
+                System.out.println("Finns inte i systemet");
+            }
 
-        if(validationAnswer.equals("y") ){
-            return "*"+strOption ;
-        }else if(validationAnswer.equals("n")){
-            return strOption;
-        }else{return "Wrong validation input";
+
         }
 
     }
-    public void showAllQuestions() throws IOException, ClassNotFoundException {
+    public void showPlayerRecord() throws IOException, ClassNotFoundException {
         // Printing all questions, one row per question with a numeric list in the eyes of the viewer.
-        LinkedList<QuestionHandler> tempListReadAll = readBackSer();
+        LinkedList<Player> tempListReadAll = readPlayerListFromSer();
+        System.out.println("  Player:               Email:                    Wins:     Played Games:                 ");
         for (int i = 0; i < tempListReadAll.size(); i++) {
-            System.out.println(i +1 + " " +tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
+            System.out.println(i +1 + " " +tempListReadAll.get(i).getName() + "                 "+ tempListReadAll.get(i).geteMail() + "                 " + tempListReadAll.get(i).getScore() +"                 " + tempListReadAll.get(i).getPlayed_games()  );
         }
     }
 
-     */
+
 
 
     public void test1() throws IOException, ClassNotFoundException {
-/**/
-        LinkedList<Player> localList = new LinkedList<>();
 
-        localList.add(new Player("Johan",11,"Joahne@mail.com",3,4));
-        localList.add(new Player("Kalle",22,"kalle@mail.com",1,5));
-        localList.add(new Player("lisa", 22,"asd",3,8));
+/*
+        LinkedList<Player> localList = new LinkedList<Player>();
 
-        System.out.println(localList.getLast().getName() + " " +
-                localList.getLast().getAge() + " " +
-                localList.getLast().geteMail() + " " +
-                localList.getLast().getScore()+ " " +
-                localList.getLast().getPlayed_games()
-        );
+        localList.add(new Player("Robin",33,"roasd@msn.com", 3,3));
+        localList.add(new Player("Kalle",22,"kalle@msn.com", 2,7));
+        writePlayerListToSer(localList);
+
+        addPlayer(new Player("Lisa", 44,"lisa@hotmail.com",0,99));
+
+*/
 
 
 
-       writePlayerListToSer(localList);
+           // showPlayerRecord();
 
-        LinkedList<Player> listfromfile = readPlayerListFromSer();
+        LinkedList<Player> lokaltest = new LinkedList<>();
+        lokaltest.add(new Player("Robin",66,"asd@msn.com",0,7));
 
-        System.out.println(listfromfile.getLast().getName() + " " +
-                listfromfile.getLast().getAge() + " " +
-                listfromfile.getLast().geteMail() + " " +
-                listfromfile.getLast().getScore()+ " " +
-                listfromfile.getLast().getPlayed_games() + " " +
-                listfromfile.getLast().toString()
-        );
-
+            LinkedList<Player> test2 = readPlayerListFromSer();
+        for (int i = 0; i < test2.size(); i++) {
+                if (test2.get(i).getName().equals(lokaltest.getFirst().getName())){
+                    System.out.println("Finns i systemet");
+                }else{
+                    System.out.println("lägg till");
+                }
+        }
 
 
 

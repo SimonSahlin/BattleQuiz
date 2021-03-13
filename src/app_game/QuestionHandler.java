@@ -13,14 +13,14 @@ public class QuestionHandler implements Serializable {
     String pathQuestionTextFile ="/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/QuestionBank.txt";
 
                 // VARIABLES
-    LinkedList<QuestionHandler> questionList1;
+    LinkedList<QuestionHandler> questionList;
     String question;
     List<String> options;
 
                 // CONSTRUCTORS:
     public  QuestionHandler(){}
     public QuestionHandler(LinkedList questionList){
-        this.questionList1 = questionList;}
+        this.questionList = questionList;}
     public QuestionHandler(String question, List<String> options){
         this.question = question;
         this.options =  options;
@@ -63,7 +63,7 @@ public class QuestionHandler implements Serializable {
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
         QuestionHandler listAfterDeSer = new QuestionHandler((LinkedList) objectInput.readObject());
 
-        return listAfterDeSer.questionList1;
+        return listAfterDeSer.questionList;
     }
     public void addQuestion() throws IOException, ClassNotFoundException {
         // New temp. linkedList to store info from q.ser(readBackser)
