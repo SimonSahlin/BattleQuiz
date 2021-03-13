@@ -9,14 +9,14 @@ public class Game_launch {
         // Instances
         GuidePrint guidePrint = new GuidePrint();
         QuestionHandler questionHandler = new QuestionHandler();
+        Player player = new Player();
 
 
         /////////////TEST AREA ///////////////////////
-            Player player = new Player();
-            player.test1();
+            //player.test1();
 
+        ////////////////////////// PROGRAM //////////////////////////
 
-        ////////////////////////// PROGRAM /////////
         guidePrint.battleQuizz();
         guidePrint.mainMenuFull();
 
@@ -27,7 +27,7 @@ public class Game_launch {
             choiceMain = scChoiceMain.nextLine();
             switch (choiceMain){
                 case "1":
-                    System.out.println("Visa ScoreBoard-- WORK TO BE DONE.. ");
+                    player.showPlayerRecord();
                     guidePrint.mainMenuMini();
                     break;
                 case "2":
@@ -43,7 +43,7 @@ public class Game_launch {
                     Scanner scChoiceHelp = new Scanner(System.in);
 
                                     do {
-                                        choiceHelp = scChoiceHelp.nextLine();
+                                         choiceHelp = scChoiceHelp.nextLine();
                                         switch (choiceHelp) {
                                             case "1":
                                                 questionHandler.showAllQuestions();
@@ -70,10 +70,38 @@ public class Game_launch {
                                                 questionHandler.resetQuestionsFromTextFile();
                                                 guidePrint.helpMenuMini();
                                                 break;
+                                            case "admin":
+                                                /// ADMIN PLAYER MENU
+                                                guidePrint.adminMenuFull();
+                                                String choiceAdmin;
+                                                Scanner scChoiceAdmin = new Scanner(System.in);
+                                                        do {
+                                                            choiceAdmin = scChoiceAdmin.nextLine();
+                                                        switch (choiceAdmin) {
+                                                            case "1":
+                                                                player.showPlayerRecord();
+                                                                guidePrint.adminMenuMini();
+                                                                break;
+                                                            case "2":
+                                                                player.removePlayer();
+                                                                guidePrint.adminMenuMini();
+                                                                break;
+                                                            case "3":
+                                                                player.clearPlayerRecord();
+                                                                guidePrint.adminMenuMini();
+                                                                break;
+                                                            case "0":
+                                                                guidePrint.helpMenuFull();
+                                                                break;
+                                                            default:
+                                                                System.out.println("Wrong entry, try again: ");
+                                                            }
+                                                        }while (!choiceAdmin.equals("0"));
+
+                                                break;
                                             case "0":
                                                 guidePrint.mainMenuFull();
                                                 break;
-
                                             default:
                                                 System.out.println("Wrong entry, try again:");
                                         }

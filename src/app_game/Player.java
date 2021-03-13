@@ -50,55 +50,7 @@ public class Player extends Person implements Serializable {
     ////////////// testarea ///////
 
     // METHODS:
-    // TO BE IMPLEMENTEND ?
-    /*
-    public void editQuestion() throws IOException, ClassNotFoundException {
-        Scanner scEdit = new Scanner(System.in);
-        //1 Read questions from .ser
-        LinkedList<QuestionHandler> tempList = readBackSer();
-        System.out.println("What question do you want to change (number)?");
 
-        try {
-            // 2 pick index to edit
-            int numberToEdit = scEdit.nextInt() - 1;
-            System.out.println("You are about to edit question nr " + (numberToEdit + 1) + ": " +
-                    tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options);
-
-
-            LinkedList answerList = new LinkedList();
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Enter question:");
-            String q = sc.nextLine();
-            System.out.println("Enter answer A");
-            String answer1 = validateOption(sc.nextLine().toLowerCase().trim());
-            System.out.println("Enter answer B");
-            String answer2 = validateOption(sc.nextLine().toLowerCase().trim());
-            System.out.println("Enter answer C");
-            String answer3 = validateOption(sc.nextLine().toLowerCase().trim());
-            System.out.println("Enter answer D");
-            String answer4 = validateOption(sc.nextLine().toLowerCase().trim());
-
-
-            answerList.add(answer1);
-            answerList.add(answer2);
-            answerList.add(answer3);
-            answerList.add(answer4);
-
-            //4 Remove previous question at this index.
-            tempList.remove(numberToEdit);
-
-            // 5 Add the edited(new) question in the same index-position as the deleted one(old one).
-            tempList.add(numberToEdit, new QuestionHandler(q, answerList));
-
-            // 6 Write modified list to ser-file
-            System.out.println("Question number " + (numberToEdit + 1) + " is edited to :" + tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options + ".");
-            writeToSer(tempList);
-        }catch (Exception e){
-            System.out.println("Enter a valid question number\n");
-            editQuestion();
-        }
-    }
-     */
     public void removePlayer() throws IOException,ClassNotFoundException {
         Scanner scRemove = new Scanner(System.in);
         LinkedList<Player> tempList = readPlayerListFromSer();
@@ -117,7 +69,7 @@ public class Player extends Person implements Serializable {
             removePlayer();
         }
 
-    }
+    } // COMPLETE
     public void writePlayerListToSer(Object toStore) throws IOException {
         //Overwrites the info on StoredPlayers.ser with the info sent as a parameter in this method.
 
@@ -149,13 +101,16 @@ public class Player extends Person implements Serializable {
     }       // COMPLETE
 
     public void showPlayerRecord() throws IOException, ClassNotFoundException {
-        // Printing all questions, one row per question with a numeric list in the eyes of the viewer.
+        // Printing all Players with highest score in top.
         LinkedList<Player> tempListReadAll = readPlayerListFromSer();
+        // SORT LIST WITH HIGHEST SCORE FIRST.... Then Print as Below-ish
+
+
         System.out.println("  Player:               Email:                    Wins:     Played Games:                 ");
         for (int i = 0; i < tempListReadAll.size(); i++) {
             System.out.println(i +1 + " " +tempListReadAll.get(i).getName() + "                 "+ tempListReadAll.get(i).geteMail() +"                 " + tempListReadAll.get(i).getScore() +"                 " + tempListReadAll.get(i).getPlayed_games()  );
         }
-    } // COMPLETE
+    } // NOT COMPLETE
     public void clearPlayerRecord() throws IOException, ClassNotFoundException {
         LinkedList<Player> tempList = readPlayerListFromSer();
         tempList.clear();
@@ -165,6 +120,7 @@ public class Player extends Person implements Serializable {
     public Player validateIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
         boolean isInTheList = false;
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
+
         for (int i = 0; i < tempLinkedList.size(); i++) {
             if (tempLinkedList.get(i).getName().equals(player.getName())){
                 isInTheList = true;
@@ -175,11 +131,11 @@ public class Player extends Person implements Serializable {
             }
 
         }
-        if(isInTheList == true){
-            System.out.println("Spelare med i listan");
+        if(isInTheList){
+            System.out.println("test - Spelare med i listan");
 
-        }else if (isInTheList == false){
-            System.out.println("spelare inte spelat innan");
+        }else if (!isInTheList){
+            System.out.println("test - spelare inte spelat innan");
             addPlayer(player);
         }
         return player;
@@ -207,7 +163,7 @@ public class Player extends Person implements Serializable {
         // addPlayer(new Player("Lisa", 44,"lisa@hotmail.com",0,99)); // Test of adPlayer(). Works Fin
         testResetPlayerrecordForDevPurposes();
         //clearPlayerRecord();
-        showPlayerRecord();
+
 
 
 

@@ -52,7 +52,29 @@ public class GuidePrint {
         System.out.println(
                 "\n" +
                         "   ||========================================================================================||\n" +
-                        "   ||[1]->All Q. [2]->Add Q. [3]->Remove Q. [4]->Edit Q. [99]->Restore Q-bank [0]->Main menu ||\n" +
+                        "   ||[1]->All Q. [2]->Add Q. [3]->Remove Q. [4]->Edit Q. [99]->Restore Q-bank [0]->Go Back   ||\n" +
+                        "   ||========================================================================================||\n"
+        );
+
+    }
+    public void adminMenuFull(){
+        //Menu at first entry of Admin PlayerList Manu
+        System.out.println(
+                "   ||======================================|| \n" +
+                        "   ||   > > ADMIN PLAYER RECORD MENU  < <  || \n" +
+                        "   ||     [1] -> Show Player record        || \n" +
+                        "   ||     [2] -> Remove Player             || \n" +
+                        "   ||     [3] -> Clear Player record       || \n" +
+                        "   ||     [0] -> Back to Main menu         || \n" +
+                        "   ||======================================|| \n");
+
+    }
+    public void adminMenuMini(){
+        // Mini menu for choices down the road in the program
+        System.out.println(
+                "\n" +
+                        "   ||========================================================================================||\n" +
+                        "   ||[1]->P. Record [2]->Remove P. [3]->Clear Record [0]->Go Back                            ||\n" +
                         "   ||========================================================================================||\n"
         );
 

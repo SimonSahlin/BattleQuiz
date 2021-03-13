@@ -112,7 +112,7 @@ public class GameEngine {
             System.out.println(player1Score + " " + player2Score);
             System.out.println("vunna matcher: " + player1.getScore() + "- " +  player2.getScore());
             reloadGameData();
-            // SPELA IGEN? FIXA VALIDERING PÅ INPUTEN Y/N
+            // SPELA IGEN? FIXA VALIDERING PÅ INPUTEN Y/N ?
             System.out.println("Play again ? [Y / N]");
             restart = scanner.nextLine().toUpperCase();
         }
@@ -129,7 +129,6 @@ public class GameEngine {
 
 
     }
-
     public static Player newPlayer(){
         //PlayerNumber is what player number is being printed for user and being "created"
 
@@ -152,9 +151,6 @@ public class GameEngine {
         return new Player(name, age, eMail, 0, 0);
 
     }
-
-
-
     public void creatCheatSheet() {
         answerConverter.put(0, "A");
         answerConverter.put(1, "B");
@@ -170,7 +166,6 @@ public class GameEngine {
             }
         }
     }
-
     public void trackScore() {
         creatCheatSheet();
         for (int i = 0; i < 3; i++) {
