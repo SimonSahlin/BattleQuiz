@@ -51,18 +51,25 @@ public class GameEngine {
         String restart= "Y";
         Scanner scanner = new Scanner(System.in);
         ///////////////TEST IN PROGRESS ///////////////////////
-        Player p = new Player();
-
-
+        Player p = new Player();                          ////
         ///////////////TEST IN PROGRESS ///////////////////////
 
         System.out.println("Type in info about player 1");
-        player1 =  newPlayer();
-        p.checkIfInTheRecord(player1);
-        System.out.println("Succesfully added info about player 1");
+        // player1 =  newPlayer();
+
+        ///////////////TEST IN PROGRESS ///////////////////////
+        player1 = p.validateIfInTheRecord(newPlayer());    ////
+    System.out.println(player1.getAge());                  ////
+        ///////////////TEST IN PROGRESS ///////////////////////
+
+       // System.out.println("Succesfully added info about player 1");
         System.out.println("Type in info about player 2");
-        player2 = newPlayer();
-        System.out.println("Succesfully added info about player 2");
+       // player2 = newPlayer();
+        ///////////////TEST IN PROGRESS ///////////////////////
+        player2 = p.validateIfInTheRecord(newPlayer());     ////
+        System.out.println(player2.getAge());               ////
+        ///////////////TEST IN PROGRESS ///////////////////////
+      //  System.out.println("Succesfully added info about player 2");
 
 
         while ( restart.equals("Y")) {
@@ -126,7 +133,6 @@ public class GameEngine {
     public static Player newPlayer(){
         //PlayerNumber is what player number is being printed for user and being "created"
 
-        //PlayerNumber is what player number is being printed for user and being "created"
         int age = 0;
         String name = "";
         String eMail = "";

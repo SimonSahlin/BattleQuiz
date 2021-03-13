@@ -11,17 +11,11 @@ import java.util.*;
  */
 public class Player extends Person implements Serializable {
     ////////////// testarea ///////
-
     // PATHS:
     // change to your local absolutepath [serFile -> StoredPlayers.ser].
     File playerSerFile = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/StoredPlayers.ser");
 
     LinkedList<Player> playerLinkedList;
-
-
-
-
-
     ////////////// testarea ///////
 
     private int score;
@@ -56,47 +50,8 @@ public class Player extends Person implements Serializable {
     ////////////// testarea ///////
 
     // METHODS:
-    // TO BE IMPLEMENTEND
+    // TO BE IMPLEMENTEND ?
     /*
-     public void resetQuestionsFromTextFile() throws IOException {
-        //Method to read txt file and add every question as objects to questionList
-        //Contains the information from QuestionBank.txt - Each line on an Index
-        LinkedList<String> linesFromQuestionBank = new LinkedList<>();
-        //List which can hold objects created from QuestionHandler class - Each object on an Index
-        LinkedList<QuestionHandler> questionList = new LinkedList<>();
-
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(pathQuestionTextFile));
-        bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
-        // bufferedReader.lines().forEach(linesFromQuestionBank::addLast); SAMMA SOM OVAN MEN MED METODREFERENS, OM VI VILL.
-
-        for(String line : linesFromQuestionBank){
-            String question = (line.substring(0, line.indexOf(":")));
-            List<String> options = Arrays.asList(line.substring(line.indexOf(":")).split(","));
-            options.set(0, options.get(0).replaceFirst(":",""));
-            questionList.add(new QuestionHandler(question, options));
-        }
-        writeToSer(questionList);
-        System.out.println("successfully initiated questionbank from txt-file.");
-    }
-        public void removeQuestion() throws IOException,ClassNotFoundException {
-        Scanner scRemove = new Scanner(System.in);
-        LinkedList<QuestionHandler> tempList = readBackSer();
-
-        System.out.println("Which question do you want to remove? (number from list of questions)");
-
-        try {
-            int NumberToRemove = scRemove.nextInt() - 1;
-            tempList.remove(NumberToRemove);
-
-            //Write modified list to ser-file again.
-            writeToSer(tempList);
-            System.out.println("Successful with removal of question number  " + (NumberToRemove + 1));
-        }catch(Exception e){
-            System.out.println("Enter a valid number..\n");
-            removeQuestion();
-        }
-
-    }
     public void editQuestion() throws IOException, ClassNotFoundException {
         Scanner scEdit = new Scanner(System.in);
         //1 Read questions from .ser
@@ -144,7 +99,25 @@ public class Player extends Person implements Serializable {
         }
     }
      */
+    public void removePlayer() throws IOException,ClassNotFoundException {
+        Scanner scRemove = new Scanner(System.in);
+        LinkedList<Player> tempList = readPlayerListFromSer();
 
+        System.out.println("Which Player do you want to remove? (number from list)");
+
+        try {
+            int NumberToRemove = scRemove.nextInt() - 1;
+            tempList.remove(NumberToRemove);
+
+            //Write modified list to ser-file again.
+            writePlayerListToSer(tempList);
+            System.out.println("Successful with removal of Player:  " + (NumberToRemove + 1));
+        }catch(Exception e){
+            System.out.println("Enter a valid number..\n");
+            removePlayer();
+        }
+
+    }
     public void writePlayerListToSer(Object toStore) throws IOException {
         //Overwrites the info on StoredPlayers.ser with the info sent as a parameter in this method.
 
@@ -154,7 +127,7 @@ public class Player extends Person implements Serializable {
         objectOutput.writeObject(toStore);
         objectOutput.flush();
         objectOutput.close();
-    }
+    }// COMPLETE
     public LinkedList<Player> readPlayerListFromSer() throws IOException, ClassNotFoundException {
 
         FileInputStream fileInput = new FileInputStream(playerSerFile);
@@ -165,8 +138,7 @@ public class Player extends Person implements Serializable {
         return  listAfterDeSer.playerLinkedList;
         //
         //obj1.playerlistlist;
-    }
-
+    } // COMPLETE
     public void addPlayer(Player player) throws IOException, ClassNotFoundException {
         // New temporary linkedList to store info fråm serfile
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
@@ -174,66 +146,74 @@ public class Player extends Person implements Serializable {
         writePlayerListToSer(tempLinkedList);
 
         //System.out.println("Question added: " + tempLinkedList.getLast().question + tempLinkedList.getLast().options);
-    }
-    public void checkIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
-        LinkedList<Player> tempLinkedList = readPlayerListFromSer();
-        for (int i = 0; i < tempLinkedList.size(); i++) {
-            if (tempLinkedList.get(i).getName().equals(player.getName())){
-                System.out.println("FINNS I SYSTEMET");
+    }       // COMPLETE
 
-            }else if(!tempLinkedList.get(i).getName().equals(player.getName())){
-                //addPlayer(player);
-                System.out.println("Finns inte i systemet");
-            }
-
-
-        }
-
-    }
     public void showPlayerRecord() throws IOException, ClassNotFoundException {
         // Printing all questions, one row per question with a numeric list in the eyes of the viewer.
         LinkedList<Player> tempListReadAll = readPlayerListFromSer();
         System.out.println("  Player:               Email:                    Wins:     Played Games:                 ");
         for (int i = 0; i < tempListReadAll.size(); i++) {
-            System.out.println(i +1 + " " +tempListReadAll.get(i).getName() + "                 "+ tempListReadAll.get(i).geteMail() + "                 " + tempListReadAll.get(i).getScore() +"                 " + tempListReadAll.get(i).getPlayed_games()  );
+            System.out.println(i +1 + " " +tempListReadAll.get(i).getName() + "                 "+ tempListReadAll.get(i).geteMail() +"                 " + tempListReadAll.get(i).getScore() +"                 " + tempListReadAll.get(i).getPlayed_games()  );
         }
-    }
+    } // COMPLETE
+    public void clearPlayerRecord() throws IOException, ClassNotFoundException {
+        LinkedList<Player> tempList = readPlayerListFromSer();
+        tempList.clear();
+        writePlayerListToSer(tempList);
+    } // COMPLETE
+    /////////////// IN PROGRESS ////////////////
+    public Player validateIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
+        boolean isInTheList = false;
+        LinkedList<Player> tempLinkedList = readPlayerListFromSer();
+        for (int i = 0; i < tempLinkedList.size(); i++) {
+            if (tempLinkedList.get(i).getName().equals(player.getName())){
+                isInTheList = true;
+                System.out.println("finns i systemet");
+                return tempLinkedList.get(i);
 
+            }else{isInTheList = false;
+            }
 
+        }
+        if(isInTheList == true){
+            System.out.println("Spelare med i listan");
 
+        }else if (isInTheList == false){
+            System.out.println("spelare inte spelat innan");
+            addPlayer(player);
+        }
+        return player;
+    } // NOT COMPLETE
+    /////////////// IN PROGRESS ////////////////
 
-    public void test1() throws IOException, ClassNotFoundException {
-
-/*
+    ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
+    public void testResetPlayerrecordForDevPurposes() throws IOException, ClassNotFoundException {
         LinkedList<Player> localList = new LinkedList<Player>();
 
         localList.add(new Player("Robin",33,"roasd@msn.com", 3,3));
         localList.add(new Player("Kalle",22,"kalle@msn.com", 2,7));
+        localList.add(new Player("Johan",11,"Johan@msn.com", 11,77));
+
         writePlayerListToSer(localList);
-
-        addPlayer(new Player("Lisa", 44,"lisa@hotmail.com",0,99));
-
-*/
-
-
-
-           // showPlayerRecord();
-
-        LinkedList<Player> lokaltest = new LinkedList<>();
-        lokaltest.add(new Player("Robin",66,"asd@msn.com",0,7));
-
-            LinkedList<Player> test2 = readPlayerListFromSer();
-        for (int i = 0; i < test2.size(); i++) {
-                if (test2.get(i).getName().equals(lokaltest.getFirst().getName())){
-                    System.out.println("Finns i systemet");
-                }else{
-                    System.out.println("lägg till");
-                }
-        }
 
 
 
     }
+    ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
 
-    ////////////// testarea ///////
+    ///////// TEST OF DIFF METHODS INSIDE METHOD BELOW WHICH RUNS AS FIRST METHOD IN MAIN ///////////
+    public void test1() throws IOException, ClassNotFoundException {
+
+        // addPlayer(new Player("Lisa", 44,"lisa@hotmail.com",0,99)); // Test of adPlayer(). Works Fin
+        testResetPlayerrecordForDevPurposes();
+        //clearPlayerRecord();
+        showPlayerRecord();
+
+
+
+
+
+    }
+    ///////// TEST OF DIFF METHODS INSIDE METHOD BELOW WHICH RUNS AS FIRST METHOD IN MAIN ///////////
+
 }
