@@ -22,15 +22,6 @@ public abstract class Person implements Serializable {
     }
     public Person(){}
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", eMail='" + eMail + '\'' +
-                '}';
-    }
-
     public String getName(){return name;}
 
     public int getAge() {

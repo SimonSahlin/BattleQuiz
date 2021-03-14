@@ -8,6 +8,11 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class GameEngine {
+        // INSTANCES
+        ///////////////TEST IN PROGRESS ///////////////////////
+        Player p = new Player();                          ////
+    ///////////////TEST IN PROGRESS ///////////////////////
+
         // VARIABLES:
     QuestionHandler questionHandler = new QuestionHandler();
     LinkedList<QuestionHandler> questionsFromSerFile = questionHandler.readBackSer();
@@ -31,6 +36,7 @@ public class GameEngine {
     public GameEngine() throws IOException, ClassNotFoundException {
     }
 
+
             // METHODS:
 
     //This method will ask 6 random questions taken from a .txt-file with serialised questions.
@@ -50,9 +56,7 @@ public class GameEngine {
     public void gameProgress() throws IOException, ClassNotFoundException { //Simon
         String restart= "Y";
         Scanner scanner = new Scanner(System.in);
-        ///////////////TEST IN PROGRESS ///////////////////////
-        Player p = new Player();                          ////
-        ///////////////TEST IN PROGRESS ///////////////////////
+
 
         System.out.println("Type in info about player 1");
         // player1 =  newPlayer();
@@ -112,6 +116,10 @@ public class GameEngine {
             System.out.println(player1Score + " " + player2Score);
             System.out.println("vunna matcher: " + player1.getScore() + "- " +  player2.getScore());
             reloadGameData();
+            /////////
+            p.addOnePlayed_games(player1);
+            p.addOnePlayed_games(player2);
+            //////////
             // SPELA IGEN? FIXA VALIDERING PÅ INPUTEN Y/N ?
             System.out.println("Play again ? [Y / N]");
             restart = scanner.nextLine().toUpperCase();
@@ -166,7 +174,7 @@ public class GameEngine {
             }
         }
     }
-    public void trackScore() {
+    public void trackScore() throws IOException, ClassNotFoundException {
         creatCheatSheet();
         for (int i = 0; i < 3; i++) {
             if (cheatSheet.get(i).equals(answerPlayer1.get(i))) {
@@ -179,9 +187,16 @@ public class GameEngine {
         if(player1Score > player2Score){
             player1.setScore(player1.getScore() + 1);
             System.out.println(player1.getName() + " wins:  " + player1.getScore() );
+
+            ////////
+            p.addOneScore(player1);
+            ////////
         }else if ( player1Score < player2Score){
             player2.setScore(player2.getScore() + 1);
             System.out.println(player2.getName() + " wins:  " + player2.getScore() );
+            ////////
+            p.addOneScore(player2);
+            ////////
         }else if (player1Score == player2Score){
             System.out.println("Oavgjort tid avgör : ");
             compareResponseTime();
@@ -211,14 +226,20 @@ public class GameEngine {
         long responseTime = difference.getSeconds();
         totalTimePlayer2 += responseTime;
     }
-    public void compareResponseTime() {
+    public void compareResponseTime() throws IOException, ClassNotFoundException {
         if (totalTimePlayer1 < totalTimePlayer2) {
             System.out.println(player1.getName() + " svarade " + (totalTimePlayer2 - totalTimePlayer1) + " sek snabbare än " + player2.getName() + " och vinner matchen!");
            player1.setScore(player1.getScore()+1);
+            ////////
+            p.addOneScore(player1);
+            ////////
 
         } else {
             System.out.println(player2.getName() + " var snabbast och svarade " + (totalTimePlayer1 - totalTimePlayer2) + " sek snabbare än " + player1.getName() + " och vinner matchen!");
             player2.setScore(player2.getScore()+1);
+            ////////
+            p.addOneScore(player2);
+            ////////
 
         }
 

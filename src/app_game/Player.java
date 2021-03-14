@@ -10,13 +10,13 @@ import java.util.*;
         ökas med 1.
  */
 public class Player extends Person implements Serializable {
-    ////////////// testarea ///////
+    ////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////
     // PATHS:
     // change to your local absolutepath [serFile -> StoredPlayers.ser].
     File playerSerFile = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/StoredPlayers.ser");
 
     LinkedList<Player> playerLinkedList;
-    ////////////// testarea ///////
+    ////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////
 
     private int score;
 
@@ -42,12 +42,16 @@ public class Player extends Person implements Serializable {
         this.score = score;
     }
 
+    public void setPlayed_Games(int counterPlayedGames) {
+        this.counterPlayedGames = counterPlayedGames;
+    }
+
     public int getPlayed_games() {
         return counterPlayedGames;
     }
 
 
-    ////////////// testarea ///////
+    ////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////
 
     // METHODS:
 
@@ -101,6 +105,7 @@ public class Player extends Person implements Serializable {
     }       // COMPLETE
 
     public void showPlayerRecord() throws IOException, ClassNotFoundException {
+        // KVAR ATT SORTERA EFTER FLEST VINSTER
         // Printing all Players with highest score in top.
         LinkedList<Player> tempListReadAll = readPlayerListFromSer();
         // SORT LIST WITH HIGHEST SCORE FIRST.... Then Print as Below-ish
@@ -116,7 +121,50 @@ public class Player extends Person implements Serializable {
         tempList.clear();
         writePlayerListToSer(tempList);
     } // COMPLETE
+    public void addOneScore(Player player) throws IOException, ClassNotFoundException {
+        // TA IN LISTA
+        // KOLLA MATCHA SPELARE
+        // UPPGRADERA SCORE MED 1
+        // SPARA LISTA
+
+        LinkedList<Player> tempList = readPlayerListFromSer();
+
+        for (int i = 0; i < tempList.size(); i++) {
+            tempList.get(i);
+            if (tempList.get(i).getName().equals(player.getName())){
+                // System.out.println(tempList.get(i).getScore());
+
+                tempList.get(i).setScore(tempList.get(i).getScore() +1);
+                // System.out.println(tempList.get(i).getScore());
+            }
+        }
+
+        writePlayerListToSer(tempList);
+
+    } // NOT COMPLETE
+    public void addOnePlayed_games(Player player) throws IOException, ClassNotFoundException {
+        // TA IN LISTA
+        // KOLLA MATCHA SPELARE
+        // UPPGRADERA SCORE MED 1
+        // SPARA LISTA
+
+        LinkedList<Player> tempList = readPlayerListFromSer();
+
+        for (int i = 0; i < tempList.size(); i++) {
+            tempList.get(i);
+            if (tempList.get(i).getName().equals(player.getName())){
+                // System.out.println(tempList.get(i).getPlayed_games());
+
+                tempList.get(i).setPlayed_Games(tempList.get(i).getPlayed_games() +1);
+               // System.out.println(tempList.get(i).getPlayed_games());
+            }
+        }
+
+        writePlayerListToSer(tempList);
+    }
+
     /////////////// IN PROGRESS blw////////////////
+
     public Player validateIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
         boolean isInTheList = false;
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
@@ -157,15 +205,21 @@ public class Player extends Person implements Serializable {
     }
     ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
 
-    ///////// TEST OF DIFF METHODS INSIDE METHOD BELOW WHICH RUNS AS FIRST METHOD IN MAIN ///////////
+    ///////// TEST OF DIFF METHODS INSIDE METHOD BELOW WHICH RUNS AS FIRST METHOD IN MAIN /////////////
+
+
     public void test1() throws IOException, ClassNotFoundException {
 
         // addPlayer(new Player("Lisa", 44,"lisa@hotmail.com",0,99)); // Test of adPlayer(). Works Fin
-        testResetPlayerrecordForDevPurposes();
-        //clearPlayerRecord();
+        // testResetPlayerrecordForDevPurposes();
+        // clearPlayerRecord();
+
+       // LinkedList <Player> templist = readPlayerListFromSer();
+        // editScore(templist.get(0));
+
 
 
     }
-
+////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////
 
 }
