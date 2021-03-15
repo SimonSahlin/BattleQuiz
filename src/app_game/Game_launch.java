@@ -11,11 +11,11 @@ public class Game_launch {
         QuestionHandler questionHandler = new QuestionHandler();
 
 
-        /////////////TEST AREA ///////////////////////
+        //-------------- TEST AREA --------------//
 
 
 
-        ////////////////////////// PROGRAM /////////
+        //-------------- PROGRAM --------------//
         guidePrint.battleQuizz();
         guidePrint.mainMenuFull();
 

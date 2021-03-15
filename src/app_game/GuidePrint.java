@@ -1,8 +1,9 @@
 package app_game;
 
 public class GuidePrint {
+
+    //The Battlequiz printout
     public void battleQuizz(){
-        // THE BATTLEQUIZ
         System.out.println(
                 "  ______   __  __   ______       ____     ___       ______   ______   __       ______     ____      __  __   ____   _____      \n" +
                         " /_  __/  / / / /  / ____/      / __ )   /   |     /_  __/  /_  __/  / /      / ____/    / __ \\    / / / /  /  _/  /__  /      \n" +
@@ -13,8 +14,8 @@ public class GuidePrint {
         );
     }
 
+    //Main menu at start-up of program
     public void mainMenuFull(){
-        // Main menu at start-up of program
         System.out.println(
                         "   ||======================================|| \n" +
                         "   ||     > > > MAIN MENU  < < <           || \n" +
@@ -24,8 +25,9 @@ public class GuidePrint {
                         "   ||     [0] -> Exit program              || \n" +
                         "   ||======================================|| \n");
     }
+
+    //Mini-Menu for  choices down the road in the program
     public void mainMenuMini(){
-        // Mini-Menu for  choices down the road in the program
         System.out.println(
                 "\n"                                                                         +
                         "   ||=================================================================||  \n" +
@@ -33,8 +35,9 @@ public class GuidePrint {
                         "   ||=================================================================||  \n"
         );
     }
+
+    //Help Menu at first entry of the help program
     public void helpMenuFull(){
-        //Help Menu at first entry of the help program
         System.out.println(
                 "   ||======================================|| \n" +
                         "   ||     > > > HELP MENU  < < <           || \n" +
@@ -47,8 +50,9 @@ public class GuidePrint {
                         "   ||======================================|| \n");
 
     }
+
+    //Mini menu for choices down the road in the program
     public void helpMenuMini(){
-        // Mini menu for choices down the road in the program
         System.out.println(
                 "\n" +
                         "   ||========================================================================================||\n" +
