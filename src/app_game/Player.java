@@ -92,8 +92,7 @@ public class Player extends Person implements Serializable {
 
 
         return  listAfterDeSer.playerLinkedList;
-        //
-        //obj1.playerlistlist;
+
     } // COMPLETE
     public void addPlayer(Player player) throws IOException, ClassNotFoundException {
         // New temporary linkedList to store info from serfile

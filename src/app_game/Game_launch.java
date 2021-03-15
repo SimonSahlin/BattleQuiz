@@ -14,7 +14,7 @@ public class Game_launch {
 
         /////////////TEST AREA ///////////////////////
           // player.test1();
-        //questionHandler.resetQuestionsFromTextFile();
+        // questionHandler.resetQuestionsFromTextFile();
         ////////////////////////// PROGRAM //////////////////////////
 
         guidePrint.battleQuizz();

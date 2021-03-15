@@ -57,6 +57,8 @@ public class QuestionHandler implements Serializable {
         objectOutput.flush();
         objectOutput.close();
     }
+
+
     public LinkedList<QuestionHandler> readBackSer() throws IOException, ClassNotFoundException {
 
         FileInputStream fileInput = new FileInputStream(serFile);
