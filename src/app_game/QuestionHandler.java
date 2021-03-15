@@ -7,17 +7,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class QuestionHandler implements Serializable {
-    // PATHS:
-    // change to your local absolutepath [serFile -> q.ser], [pathQuestionTextFile -> QuestionBank.txt].
-    File serFile = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/q.ser");
-    String pathQuestionTextFile ="/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/QuestionBank.txt";
 
-                // VARIABLES
+    //PATHS: Change to your local absolutepath [serFile -> q.ser], [pathQuestionTextFile -> QuestionBank.txt].
+    File questions_SerFilePath = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\q.ser");
+    String questions_TextFilePath ="C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\QuestionBank.txt";
+
+    // --- VARIABLES ---
     LinkedList<QuestionHandler> questionList1;
     String question;
     List<String> options;
 
-                // CONSTRUCTORS:
+    // --- CONSTRUCTORS ---
     public  QuestionHandler(){}
     public QuestionHandler(LinkedList questionList){
         this.questionList1 = questionList;}
@@ -26,7 +26,9 @@ public class QuestionHandler implements Serializable {
         this.options =  options;
     }
 
-                // METHODS:
+    // --- METHODS ---
+
+    //Methods to handle the files
     public void resetQuestionsFromTextFile() throws IOException {
         //Method to read txt file and add every question as objects to questionList
         //Contains the information from QuestionBank.txt - Each line on an Index
@@ -34,7 +36,7 @@ public class QuestionHandler implements Serializable {
         //List which can hold objects created from QuestionHandler class - Each object on an Index
         LinkedList<QuestionHandler> questionList = new LinkedList<>();
 
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(pathQuestionTextFile));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(questions_TextFilePath));
         bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
         // bufferedReader.lines().forEach(linesFromQuestionBank::addLast); SAMMA SOM OVAN MEN MED METODREFERENS, OM VI VILL.
 
@@ -47,24 +49,44 @@ public class QuestionHandler implements Serializable {
         writeToSer(questionList);
         System.out.println("successfully initiated questionbank from txt-file.");
     }
+
     public void writeToSer(Object toStore) throws IOException {
         //Overwrites the info on q.ser with the info sent as a parameter in this method.
 
-        FileOutputStream fileOutput = new FileOutputStream(serFile);
+        FileOutputStream fileOutput = new FileOutputStream(questions_SerFilePath);
         ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 
         objectOutput.writeObject(toStore);
         objectOutput.flush();
         objectOutput.close();
     }
+
     public LinkedList<QuestionHandler> readBackSer() throws IOException, ClassNotFoundException {
 
-        FileInputStream fileInput = new FileInputStream(serFile);
+        FileInputStream fileInput = new FileInputStream(questions_SerFilePath);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
         QuestionHandler listAfterDeSer = new QuestionHandler((LinkedList) objectInput.readObject());
 
         return listAfterDeSer.questionList1;
     }
+
+    ///////////////////////LIGGER DEN HÄR I RÄTT KLASS?
+    public String validateOption(String strOption){
+        System.out.println("Is this the correct option? - Answer with 'y' or 'n' ( YES or NO)");
+        Scanner scValidate = new Scanner(System.in);
+
+        String validationAnswer = scValidate.next().toLowerCase();
+
+        if(validationAnswer.equals("y") ){
+            return "*"+strOption ;
+        }else if(validationAnswer.equals("n")){
+            return strOption;
+        }else{return "Wrong validation input";
+        }
+
+    }
+
+    //Methods to handle questions
     public void addQuestion() throws IOException, ClassNotFoundException {
         // New temp. linkedList to store info from q.ser(readBackser)
         LinkedList<QuestionHandler> tempLinkedList = readBackSer();
@@ -97,22 +119,9 @@ public class QuestionHandler implements Serializable {
         //Write the modified list back to q.ser.
         writeToSer(tempLinkedList);
 
-       System.out.println("Question added: " + tempLinkedList.getLast().question + tempLinkedList.getLast().options);
+        System.out.println("Question added: " + tempLinkedList.getLast().question + tempLinkedList.getLast().options);
     }
-    public String validateOption(String strOption){
-        System.out.println("Is this the correct option? - Answer with 'y' or 'n' ( YES or NO)");
-        Scanner scValidate = new Scanner(System.in);
 
-        String validationAnswer = scValidate.next().toLowerCase();
-
-        if(validationAnswer.equals("y") ){
-            return "*"+strOption ;
-        }else if(validationAnswer.equals("n")){
-            return strOption;
-        }else{return "Wrong validation input";
-        }
-
-    }
     public void showAllQuestions() throws IOException, ClassNotFoundException {
         // Printing all questions, one row per question with a numeric list in the eyes of the viewer.
         LinkedList<QuestionHandler> tempListReadAll = readBackSer();
@@ -120,6 +129,7 @@ public class QuestionHandler implements Serializable {
             System.out.println(i +1 + " " +tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
         }
     }
+
     public void removeQuestion() throws IOException,ClassNotFoundException {
         Scanner scRemove = new Scanner(System.in);
         LinkedList<QuestionHandler> tempList = readBackSer();
@@ -139,6 +149,7 @@ public class QuestionHandler implements Serializable {
         }
 
     }
+
     public void editQuestion() throws IOException, ClassNotFoundException {
         Scanner scEdit = new Scanner(System.in);
         //1 Read questions from .ser

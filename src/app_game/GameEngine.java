@@ -8,7 +8,8 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class GameEngine {
-        // VARIABLES:
+
+    // --- VARIABLES ---
     QuestionHandler questionHandler = new QuestionHandler();
     LinkedList<QuestionHandler> questionsFromSerFile = questionHandler.readBackSer();
     LinkedList<QuestionHandler> gameQuestions = new LinkedList();
@@ -27,20 +28,20 @@ public class GameEngine {
     public int player1Score = 0;
     public int player2Score = 0;
 
-            // CONSTRUCTORS :
+    // --- CONSTRUCTORS ---
     public GameEngine() throws IOException, ClassNotFoundException {
     }
 
-            // METHODS:
+    // --- METHODS ---
 
     //This method will ask 6 random questions taken from a .txt-file with serialised questions.
-    public void randomizeQuestions() throws IOException, ClassNotFoundException { //Simon
-        int allRandomQuestions = questionsFromSerFile.size();//Change to dynamic. Length of the list of all questions.
-        for (int i = 0; i < 6/*length of List, the list are from a .txt-file of serialiced objects. 6 radomized questions*/; i++) {
+    public void randomizeQuestions() throws IOException, ClassNotFoundException {
+        int allRandomQuestions = questionsFromSerFile.size();
+        for (int i = 0; i < 6; i++) {
             int randNr = (int) (Math.random() * allRandomQuestions);
-            gameQuestions.add(questionsFromSerFile.get(randNr)); //Add random questions to a new list of questions which will be asked to the players.
-            questionsFromSerFile.remove(randNr); // Removing the index of the random number (removing the questions so not the same question is asked twice)
-            allRandomQuestions -= 1; //
+            gameQuestions.add(questionsFromSerFile.get(randNr));
+            questionsFromSerFile.remove(randNr);
+            allRandomQuestions -= 1;
         }
         questionsFromSerFile = questionHandler.readBackSer();
 
@@ -98,7 +99,7 @@ public class GameEngine {
             trackScore();
             System.out.println("Rätt svar - " + player1.getName() + "  : [ " + cheatSheet.get(0) + " " + cheatSheet.get(1) + " " + cheatSheet.get(2) + " ] " + "\nRätt svar - " +player2.getName() + " [ " + cheatSheet.get(3) + " " + cheatSheet.get(4) + " " + cheatSheet.get(5) + " ]");
             System.out.println(player1Score + " " + player2Score);
-            System.out.println("vunna matcher: " + player1.getScore() + "- " +  player2.getScore());
+            System.out.println("vunna matcher: " + player1.getScoreCounter() + "- " +  player2.getScoreCounter());
             reloadGameData();
             // SPELA IGEN? FIXA VALIDERING PÅ INPUTEN Y/N
             System.out.println("Play again ? [Y / N]");
@@ -169,11 +170,11 @@ public class GameEngine {
             }
         }
         if(player1Score > player2Score){
-            player1.setScore(player1.getScore() + 1);
-            System.out.println(player1.getName() + " wins:  " + player1.getScore() );
+            player1.setScoreCounter(player1.getScoreCounter() + 1);
+            System.out.println(player1.getName() + " wins:  " + player1.getScoreCounter() );
         }else if ( player1Score < player2Score){
-            player2.setScore(player2.getScore() + 1);
-            System.out.println(player2.getName() + " wins:  " + player2.getScore() );
+            player2.setScoreCounter(player2.getScoreCounter() + 1);
+            System.out.println(player2.getName() + " wins:  " + player2.getScoreCounter() );
         }else if (player1Score == player2Score){
             System.out.println("Oavgjort tid avgör : ");
             compareResponseTime();
@@ -185,32 +186,37 @@ public class GameEngine {
 
 
     }
+
     public void startTimerPlayer1() {
         startTimePlayer1 = LocalTime.now();
     }
+
     public void startTimerPlayer2() {
         startTimePlayer2 = LocalTime.now();
     }
+
     public void stopTimerPlayer1() {
         stopTimePlayer1 = LocalTime.now();
         Duration difference = Duration.between(startTimePlayer1, stopTimePlayer1);
         long responseTime = difference.getSeconds();
         totalTimePlayer1 += responseTime;
     }
+
     public void stopTimerPlayer2() {
         stopTimePlayer2 = LocalTime.now();
         Duration difference = Duration.between(startTimePlayer2, stopTimePlayer2);
         long responseTime = difference.getSeconds();
         totalTimePlayer2 += responseTime;
     }
+
     public void compareResponseTime() {
         if (totalTimePlayer1 < totalTimePlayer2) {
             System.out.println(player1.getName() + " svarade " + (totalTimePlayer2 - totalTimePlayer1) + " sek snabbare än " + player2.getName() + " och vinner matchen!");
-           player1.setScore(player1.getScore()+1);
+           player1.setScoreCounter(player1.getScoreCounter()+1);
 
         } else {
             System.out.println(player2.getName() + " var snabbast och svarade " + (totalTimePlayer1 - totalTimePlayer2) + " sek snabbare än " + player1.getName() + " och vinner matchen!");
-            player2.setScore(player2.getScore()+1);
+            player2.setScoreCounter(player2.getScoreCounter()+1);
 
         }
 
