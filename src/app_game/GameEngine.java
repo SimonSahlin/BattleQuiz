@@ -58,20 +58,18 @@ public class GameEngine {
         Scanner scanner = new Scanner(System.in);
 
 
-        System.out.println("Type in info about player 1");
+        System.out.println("Enter info about player 1: \n");
         // player1 =  newPlayer();
 
         ///////////////TEST IN PROGRESS ///////////////////////
         player1 = p.validateIfInTheRecord(newPlayer());    ////
-    System.out.println(player1.getAge());                  ////
         ///////////////TEST IN PROGRESS ///////////////////////
 
        // System.out.println("Succesfully added info about player 1");
-        System.out.println("Type in info about player 2");
+        System.out.println("Enter info about player 2: \n");
        // player2 = newPlayer();
         ///////////////TEST IN PROGRESS ///////////////////////
         player2 = p.validateIfInTheRecord(newPlayer());     ////
-        System.out.println(player2.getAge());               ////
         ///////////////TEST IN PROGRESS ///////////////////////
       //  System.out.println("Succesfully added info about player 2");
 

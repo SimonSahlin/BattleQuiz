@@ -24,10 +24,6 @@ public abstract class Person implements Serializable {
 
     public String getName(){return name;}
 
-    public int getAge() {
-        return age;
-    }
-
     public String geteMail() {
         return eMail;
     }

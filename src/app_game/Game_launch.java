@@ -13,8 +13,8 @@ public class Game_launch {
         GameEngine gameEngine = new GameEngine();
 
         /////////////TEST AREA ///////////////////////
-           player.test1();
-
+          // player.test1();
+        //questionHandler.resetQuestionsFromTextFile();
         ////////////////////////// PROGRAM //////////////////////////
 
         guidePrint.battleQuizz();

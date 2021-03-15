@@ -59,7 +59,7 @@ public class Player extends Person implements Serializable {
         Scanner scRemove = new Scanner(System.in);
         LinkedList<Player> tempList = readPlayerListFromSer();
 
-        System.out.println("Which Player do you want to remove? (number from list)");
+        System.out.println("Which Player do you want to remove? (Number from ScoreBoard)");
 
         try {
             int NumberToRemove = scRemove.nextInt() - 1;
@@ -74,7 +74,7 @@ public class Player extends Person implements Serializable {
         }
 
     } // COMPLETE
-    public void writePlayerListToSer(Object toStore) throws IOException {
+    public void writePlayerListToSer(LinkedList<Player> toStore) throws IOException {
         //Overwrites the info on StoredPlayers.ser with the info sent as a parameter in this method.
 
         FileOutputStream fileOutput = new FileOutputStream(playerSerFile);
@@ -96,12 +96,11 @@ public class Player extends Person implements Serializable {
         //obj1.playerlistlist;
     } // COMPLETE
     public void addPlayer(Player player) throws IOException, ClassNotFoundException {
-        // New temporary linkedList to store info fråm serfile
+        // New temporary linkedList to store info from serfile
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
         tempLinkedList.add(player);
         writePlayerListToSer(tempLinkedList);
 
-        //System.out.println("Question added: " + tempLinkedList.getLast().question + tempLinkedList.getLast().options);
     }       // COMPLETE
 
     public void showPlayerRecord() throws IOException, ClassNotFoundException {
@@ -166,29 +165,24 @@ public class Player extends Person implements Serializable {
     /////////////// IN PROGRESS blw////////////////
 
     public Player validateIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
-        boolean isInTheList = false;
+
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
-
+            // If player is in the list of prev players, return this player to the game.
         for (int i = 0; i < tempLinkedList.size(); i++) {
-            if (tempLinkedList.get(i).getName().equals(player.getName())){
-                isInTheList = true;
-                System.out.println("finns i systemet");
+            if (tempLinkedList.get(i).getName().equals(player.getName())) {
+                System.out.println("Welcome back " + tempLinkedList.get(i).getName() + ", Played Games: "+ tempLinkedList.get(i).getPlayed_games() + ", Total wins: " + tempLinkedList.get(i).getScore() + ".\n");
+               // isInTheList = true;
                 return tempLinkedList.get(i);
-
-            }else{isInTheList = false;
             }
-
         }
-        if(isInTheList){
-            System.out.println("test - Spelare med i listan");
-
-        }else if (!isInTheList){
-            System.out.println("test - spelare inte spelat innan");
-            addPlayer(player);
-        }
+        // If not in the list of prev players, add player and return player.
+        System.out.println(player.getName() + ", Welcome to your first game " + ".");
+        addPlayer(player);
         return player;
-    } // NOT COMPLETE
-    /////////////// IN PROGRESS above////////////////
+
+
+    } //COMPLETE
+
 
     ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
     public void testResetPlayerrecordForDevPurposes() throws IOException, ClassNotFoundException {
@@ -211,7 +205,7 @@ public class Player extends Person implements Serializable {
     public void test1() throws IOException, ClassNotFoundException {
 
         // addPlayer(new Player("Lisa", 44,"lisa@hotmail.com",0,99)); // Test of adPlayer(). Works Fin
-        // testResetPlayerrecordForDevPurposes();
+        testResetPlayerrecordForDevPurposes();
         // clearPlayerRecord();
 
        // LinkedList <Player> templist = readPlayerListFromSer();

@@ -45,7 +45,7 @@ public class QuestionHandler implements Serializable {
             questionList.add(new QuestionHandler(question, options));
         }
         writeToSer(questionList);
-        System.out.println("successfully initiated questionbank from txt-file.");
+        System.out.println("Successfully restored questionbank from txt-file.");
     }
     public void writeToSer(Object toStore) throws IOException {
         //Overwrites the info on q.ser with the info sent as a parameter in this method.
