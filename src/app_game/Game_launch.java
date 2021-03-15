@@ -13,7 +13,7 @@ public class Game_launch {
         GameEngine gameEngine = new GameEngine();
 
         /////////////TEST AREA ///////////////////////
-          // player.test1();
+        //  player.testResetPlayerrecordForDevPurposes();
         // questionHandler.resetQuestionsFromTextFile();
         ////////////////////////// PROGRAM //////////////////////////
 
@@ -108,6 +108,8 @@ public class Game_launch {
                     System.out.println("Wrong entry, try again:");
             }
         }while(!choiceMain.equals("0"));
+
+
 
 
 

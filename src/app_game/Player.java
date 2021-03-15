@@ -3,25 +3,18 @@ package app_game;
 
 import java.io.*;
 import java.util.*;
-
-/*Ni ska implementera den konkreta klassen app_game.Player som extendar app_game.Person och lägger
-        till hantering av variablerna score och played_games. Varje gång spelaren spelar
-        ett spel ska played_games ökas på med 1 och om användaren vinner matchen ska score
-        ökas med 1.
- */
 public class Player extends Person implements Serializable {
-    ////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////
-    // PATHS:
-    // change to your local absolutepath [serFile -> StoredPlayers.ser].
+
+            // PATHS:
+            // change to your local absolutepath [serFile -> StoredPlayers.ser].
     File playerSerFile = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/StoredPlayers.ser");
 
-    LinkedList<Player> playerLinkedList;
-    ////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////
-
+            // VARIABLES:
+    private LinkedList<Player> playerLinkedList;
     private int score;
-
     private int counterPlayedGames;
 
+            // CONSTRUCTORS:
     public Player() {}
     public Player(LinkedList playerList){
         this.playerLinkedList = playerList;}
@@ -31,29 +24,7 @@ public class Player extends Person implements Serializable {
         this.counterPlayedGames = played_games;
     }
 
-
-
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public void setPlayed_Games(int counterPlayedGames) {
-        this.counterPlayedGames = counterPlayedGames;
-    }
-
-    public int getPlayed_games() {
-        return counterPlayedGames;
-    }
-
-
-    ////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////
-
-    // METHODS:
+            // METHODS:
 
     public void removePlayer() throws IOException,ClassNotFoundException {
         Scanner scRemove = new Scanner(System.in);
@@ -101,7 +72,6 @@ public class Player extends Person implements Serializable {
         writePlayerListToSer(tempLinkedList);
 
     }       // COMPLETE
-
     public void showPlayerRecord() throws IOException, ClassNotFoundException {
         // KVAR ATT SORTERA EFTER FLEST VINSTER
         // Printing all Players with highest score in top.
@@ -139,7 +109,7 @@ public class Player extends Person implements Serializable {
 
         writePlayerListToSer(tempList);
 
-    } // NOT COMPLETE
+    } // COMPLETE
     public void addOnePlayed_games(Player player) throws IOException, ClassNotFoundException {
         // TA IN LISTA
         // KOLLA MATCHA SPELARE
@@ -159,10 +129,7 @@ public class Player extends Person implements Serializable {
         }
 
         writePlayerListToSer(tempList);
-    }
-
-    /////////////// IN PROGRESS blw////////////////
-
+    } // COMPLETE
     public Player validateIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
 
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
@@ -181,9 +148,21 @@ public class Player extends Person implements Serializable {
 
 
     } //COMPLETE
+    public int getScore() {
+        return score;
+    }
+    public void setScore(int score) {
+        this.score = score;
+    }
+    public void setPlayed_Games(int counterPlayedGames) {
+        this.counterPlayedGames = counterPlayedGames;
+    }
+    public int getPlayed_games() {
+        return counterPlayedGames;
+    }
 
 
-    ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
+    ////////// RESETTING PLAYER-SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
     public void testResetPlayerrecordForDevPurposes() throws IOException, ClassNotFoundException {
         LinkedList<Player> localList = new LinkedList<Player>();
 
@@ -197,22 +176,4 @@ public class Player extends Person implements Serializable {
 
     }
     ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
-
-    ///////// TEST OF DIFF METHODS INSIDE METHOD BELOW WHICH RUNS AS FIRST METHOD IN MAIN /////////////
-
-
-    public void test1() throws IOException, ClassNotFoundException {
-
-        // addPlayer(new Player("Lisa", 44,"lisa@hotmail.com",0,99)); // Test of adPlayer(). Works Fin
-        testResetPlayerrecordForDevPurposes();
-        // clearPlayerRecord();
-
-       // LinkedList <Player> templist = readPlayerListFromSer();
-        // editScore(templist.get(0));
-
-
-
-    }
-////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////////////////// testarea ///////
-
 }

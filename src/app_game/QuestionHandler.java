@@ -11,7 +11,6 @@ public class QuestionHandler implements Serializable {
     // change to your local absolutepath [serFile -> q.ser], [pathQuestionTextFile -> QuestionBank.txt].
     File serFile = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/q.ser");
     String pathQuestionTextFile ="/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/QuestionBank.txt";
-
                 // VARIABLES
     LinkedList<QuestionHandler> questionList;
     String question;
@@ -47,7 +46,7 @@ public class QuestionHandler implements Serializable {
         writeToSer(questionList);
         System.out.println("Successfully restored questionbank from txt-file.");
     }
-    public void writeToSer(Object toStore) throws IOException {
+    public void writeToSer(LinkedList<QuestionHandler> toStore) throws IOException {
         //Overwrites the info on q.ser with the info sent as a parameter in this method.
 
         FileOutputStream fileOutput = new FileOutputStream(serFile);
@@ -57,8 +56,6 @@ public class QuestionHandler implements Serializable {
         objectOutput.flush();
         objectOutput.close();
     }
-
-
     public LinkedList<QuestionHandler> readBackSer() throws IOException, ClassNotFoundException {
 
         FileInputStream fileInput = new FileInputStream(serFile);
