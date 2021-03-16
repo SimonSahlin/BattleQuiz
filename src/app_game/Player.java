@@ -78,11 +78,11 @@ public class Player extends Person implements Serializable {
         LinkedList<Player> tempListReadAll = readPlayerListFromSer();
         // SORT LIST WITH HIGHEST SCORE FIRST.... Then Print as Below-ish
 
-
-        System.out.println("  Player:               Email:                    Wins:     Played Games:                 ");
+        System.out.println(" \tPlayer:\t\t\tEmail:\t\t\t\t\t\tWins:\t\t\tPlayed Games:");
         for (int i = 0; i < tempListReadAll.size(); i++) {
-            System.out.println(i +1 + " " +tempListReadAll.get(i).getName() + "                 "+ tempListReadAll.get(i).geteMail() +"                 " + tempListReadAll.get(i).getScore() +"                 " + tempListReadAll.get(i).getPlayed_games()  );
+            System.out.println(i +1 + "\t" +tempListReadAll.get(i).getName() + "\t\t\t"+ tempListReadAll.get(i).geteMail() +"\t\t\t\t\t\t" + tempListReadAll.get(i).getScore() +"\t\t\t" + tempListReadAll.get(i).getPlayed_games() );
         }
+
     } // NOT COMPLETE
     public void clearPlayerRecord() throws IOException, ClassNotFoundException {
         LinkedList<Player> tempList = readPlayerListFromSer();

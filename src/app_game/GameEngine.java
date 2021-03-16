@@ -59,19 +59,11 @@ public class GameEngine {
 
 
         System.out.println("Enter info about player 1: \n");
-        // player1 =  newPlayer();
-
-        ///////////////TEST IN PROGRESS ///////////////////////
-        player1 = p.validateIfInTheRecord(newPlayer());    ////
-        ///////////////TEST IN PROGRESS ///////////////////////
-
-       // System.out.println("Succesfully added info about player 1");
+        player1 = p.validateIfInTheRecord(newPlayer());
         System.out.println("Enter info about player 2: \n");
-       // player2 = newPlayer();
-        ///////////////TEST IN PROGRESS ///////////////////////
-        player2 = p.validateIfInTheRecord(newPlayer());     ////
-        ///////////////TEST IN PROGRESS ///////////////////////
-      //  System.out.println("Succesfully added info about player 2");
+        player2 = p.validateIfInTheRecord(newPlayer());
+
+
 
 
         while ( restart.equals("Y")) {

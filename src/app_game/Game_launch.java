@@ -6,6 +6,11 @@ import java.util.Scanner;
 
 public class Game_launch {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+        //// IF IO MESSAGE DUE TO SERIALIZATION OCCOURS AFTER DOWNLOAD THIS VERSION DO THIS:
+        //// UNCOMMENT CODE IN BELOW AND COMMENT AWAY THE REST OF MAIN. RUN PROGRAM AND THEN RUN PROGRAM AS NORMAL
+
+
         // Instances
         GuidePrint guidePrint = new GuidePrint();
         QuestionHandler questionHandler = new QuestionHandler();
@@ -13,8 +18,9 @@ public class Game_launch {
         GameEngine gameEngine = new GameEngine();
 
         /////////////TEST AREA ///////////////////////
-        //  player.testResetPlayerrecordForDevPurposes();
+         // player.testResetPlayerrecordForDevPurposes();
         // questionHandler.resetQuestionsFromTextFile();
+
         ////////////////////////// PROGRAM //////////////////////////
 
         guidePrint.battleQuizz();
@@ -43,7 +49,7 @@ public class Game_launch {
 
                             do {
                                  choiceHelp = scChoiceHelp.nextLine();
-                                /// ADMIN PLAYER MENU
+                                /// HELP MENU
                                 switch (choiceHelp) {
                                     case "1":
                                         questionHandler.showAllQuestions();
