@@ -19,12 +19,8 @@ public class Game_launch {
 
 
         //-------------- TEST AREA --------------//
-
-          //player.testResetPlayerrecordForDevPurposes();
+          player.testResetPlayerrecordForDevPurposes();
          //questionHandler.resetQuestionsFromTextFile();
-
-
-
         //-------------- PROGRAM --------------//
 
         guidePrint.battleQuizz();

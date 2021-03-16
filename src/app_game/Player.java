@@ -19,7 +19,7 @@ public class Player extends Person implements Serializable {
     public Player() {}
     public Player(LinkedList playerList){
         this.playerLinkedList = playerList;}
-    public Player(String name, int age, String eMail, int score, int played_games){
+    public Player(String name, int age, String eMail, int scoreCounter, int played_games){
 
         super(name, age, eMail);
         this.scoreCounter = scoreCounter;
@@ -174,10 +174,12 @@ public class Player extends Person implements Serializable {
         localList.add(new Player("Kalle",22,"kalle@msn.com", 2,7));
         localList.add(new Player("Johan",11,"Johan@msn.com", 11,77));
 
+
+
         writePlayerListToSer(localList);
 
 
 
     }
-    ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
+                ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
 }
