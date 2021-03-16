@@ -1,28 +1,32 @@
 package app_game;
 
-public abstract class Person {
+
+import java.io.Serializable;
+
+public abstract class Person implements Serializable {
 
     // --- VARIABLES ---
     private String name;
     private int age;
     private String eMail;
 
-    // --- CONSTRUCTORS ---
-    public Person(){
 
-    }
+    // --- CONSTRUCTORS ---
+
     public Person(String name, int age, String eMail){
         this.name = name;
         this.age = age;
         this.eMail = eMail;
     }
 
-    // --- METHODS ---
-    public String personInformationToString(){
-        return name + age + eMail;
-    }
+    public Person(){}
+
 
     // --- Getters & Setters ---
     public String getName(){return name;}
+
+    public String geteMail() {
+        return eMail;
+    }
 }
 

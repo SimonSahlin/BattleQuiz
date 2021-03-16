@@ -2,6 +2,7 @@
 
 
 
+<<<<<<< HEAD
 What is the capital of Chile:*Santiago
 What is the highest mountain in Britain:*Ben Nevis
 What is the smallest country in the world:*Vatican City
@@ -32,6 +33,41 @@ Who won the FIFA Women's World Cup in 2019:*USA
 In bowling, what is the term given for three consecutive strikes:*A turkey
 How many world titles has Phil Talyor won in darts:*16
 In golf, where does the Masters take place?Augusta National
+=======
+What is the capital of Chile:Quito,Bogotá,Rio,*Santiago
+What is the highest mountain in Britain:Scafell Pike,Cat Bells,Ben Macdui,*Ben Nevis
+What is the smallest country in the world:San Marino,*Vatican City,Iceland,Tuvalu
+Alberta is a province of which country:*Canada, North America,Greenland,Iceland
+How many countries still have the shilling as currency:*Four,Five,Zero,Two
+Which is the only vowel not used as the first letter in a US State:O,I,*E,U
+What is the largest country in the world:USA,China,Africa,*Russia
+Where would you find the River Thames:*London,Berlin,Cairo,Israel
+What is the hottest continent on Earth:*Africa,South America,Asia,Australia
+What is the longest river in the world:Grand Canyon,*Nile,Thames,Yellow River
+What did the Romans call Scotland:Highland,*Caledonia,Mountdonia,Land of the green
+Who was made Lord Mayor of London In 1397, 1398, 1406 And 1419:Richard Sutton,Ben Whittington,*Richard Whittington,Ben Sutton
+Who was Henry VIIIs last wife:Johanna Clerk, Clair Upton,*Catherine Parr,Sophie Dee
+Who was the youngest British Prime Minister:Ben White,*William Pitt,Bradly Cooper,Ben Stiller
+In which year was Joan of Arc burned at the stake:*1431,1531,1631,1731
+Which nationality was the polar explorer Roald Amundsen:Denmark,Sweden,*Norwegian,Iceland
+Who was the first female Prime Minister of Australia:Sophie Dee,Roberta Dorothy,Alicia Twayne,*Julia Gillard
+Which English city was once known as Duroliponte:London,Birmingham,*Cambridge,Manchester
+The first successful vaccine was introduced by Edward Jenner in 1796. Which disease did it guard against:AIDS,*Smallpox,Spanish flue,Malaria
+What are the five colours of the Olympic rings:*Blue yellow black green and red,Blue yellow brown green and red,Blue yellow grey green and red,Blue yellow magenta green and red
+In football, which team has won the Champions League (formerly the European Cup) the most:Manchester United,*Real Madrid,Barcelona,Milan AC
+How many players are there in a rugby league team:10,11,12,*13
+Which horse is the only three-time winner of the Grand National:Black stallion,*Red Rum,Pegasus,Rostaligia
+Since 1977, where has snooker's World Championship taken place:Las Vegas,London,*Crucible Theatre,Nevada
+In tennis, what piece of fruit is found at the top of the men's Wimbledon trophy:Banana,Apple,Mango,*Pineapple
+Who won the FIFA Women's World Cup in 2019:Germany,*USA,Sweden,France
+In bowling, what is the term given for three consecutive strikes:Hattrick,Super strike,A homerun,*A turkey
+How many world titles has Phil Talyor won in darts:*16,2,23,6
+
+///// FORTSÄTT NEDAN ////
+
+
+In golf, where does the Masters take place:*Augusta National
+>>>>>>> aa
 Who was the only British Prime Minister to be assassinated:*Spencer Perceval - May 1812
 How long does Prime Minister’s Questions last:*30 minutes
 How many Members of Parliament (MPs) are there:*650

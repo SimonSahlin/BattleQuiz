@@ -8,19 +8,20 @@ import java.util.Scanner;
 
 public class QuestionHandler implements Serializable {
 
-    //PATHS: Change to your local absolutepath [serFile -> q.ser], [pathQuestionTextFile -> QuestionBank.txt].
-    File questions_SerFilePath = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\q.ser");
-    String questions_TextFilePath ="C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\QuestionBank.txt";
+    // PATHS:
+    // change to your local absolutepath [serFile -> q.ser], [pathQuestionTextFile -> QuestionBank.txt].
+    File questions_SerFilePath = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/q.ser");
+    String questions_TextFilePath ="/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/QuestionBank.txt";
+                // --- VARIABLES ---
+    LinkedList<QuestionHandler> questionList;
 
-    // --- VARIABLES ---
-    LinkedList<QuestionHandler> questionList1;
     String question;
     List<String> options;
 
     // --- CONSTRUCTORS ---
     public  QuestionHandler(){}
     public QuestionHandler(LinkedList questionList){
-        this.questionList1 = questionList;}
+        this.questionList = questionList;}
     public QuestionHandler(String question, List<String> options){
         this.question = question;
         this.options =  options;
@@ -47,10 +48,11 @@ public class QuestionHandler implements Serializable {
             questionList.add(new QuestionHandler(question, options));
         }
         writeToSer(questionList);
-        System.out.println("successfully initiated questionbank from txt-file.");
+        System.out.println("Successfully restored questionbank from txt-file.");
     }
 
-    public void writeToSer(Object toStore) throws IOException {
+    public void writeToSer(LinkedList<QuestionHandler> toStore) throws IOException {
+
         //Overwrites the info on q.ser with the info sent as a parameter in this method.
 
         FileOutputStream fileOutput = new FileOutputStream(questions_SerFilePath);
@@ -67,7 +69,7 @@ public class QuestionHandler implements Serializable {
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
         QuestionHandler listAfterDeSer = new QuestionHandler((LinkedList) objectInput.readObject());
 
-        return listAfterDeSer.questionList1;
+        return listAfterDeSer.questionList;
     }
 
     ///////////////////////LIGGER DEN HÄR I RÄTT KLASS?
