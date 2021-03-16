@@ -1,39 +1,7 @@
 (((How many of the group members lives in Skåne:1,3,*2,4))) -> rätt format
+// EXEMPEL PÅ RÄTT FORMAT OVAN
 
 
-
-<<<<<<< HEAD
-What is the capital of Chile:*Santiago
-What is the highest mountain in Britain:*Ben Nevis
-What is the smallest country in the world:*Vatican City
-Alberta is a province of which country:*Canada
-How many countries still have the shilling as currency:*Four – Kenya, Uganda, Tanzania and Somalia
-Which is the only vowel not used as the first letter in a US State:*E
-What is the largest country in the world:*Russia
-Where would you find the River Thames:*London, UK
-What is the hottest continent on Earth:*Africa
-What is the longest river in the world:*River Nile
-What did the Romans call Scotland:*Caledonia
-Who was made Lord Mayor of London In 1397, 1398, 1406 And 1419:*Richard (Dick) Whittington
-Who was Henry VIIIs last wife?Catherine Parr
-Who was the youngest British Prime Minister:*William Pitt (The Younger)
-In which year was Joan of Arc burned at the stake:*1431
-Which nationality was the polar explorer Roald Amundsen:*Norwegian
-Who was the first female Prime Minister of Australia:*Julia Gillard (2010-2013)
-Which English explorer was executed in 1618, fifteen year after being found guilty of conspiracy against King James I of England and VI of Scotland:*Sir Walter Raleigh
-Which English city was once known as Duroliponte:*Cambridge
-The first successful vaccine was introduced by Edward Jenner in 1796. Which disease did it guard against:*Smallpox
-What are the five colours of the Olympic rings? Blue, yellow, black, green and red
-In football, which team has won the Champions League (formerly the European Cup) the most:*Real Madrid (13
-How many players are there in a rugby league team:*13
-Which horse is the only three-time winner of the Grand National:*Red Rum
-Since 1977, where has snooker's World Championship taken place?Crucible Theatre
-In tennis, what piece of fruit is found at the top of the men's Wimbledon trophy?Pineapple
-Who won the FIFA Women's World Cup in 2019:*USA
-In bowling, what is the term given for three consecutive strikes:*A turkey
-How many world titles has Phil Talyor won in darts:*16
-In golf, where does the Masters take place?Augusta National
-=======
 What is the capital of Chile:Quito,Bogotá,Rio,*Santiago
 What is the highest mountain in Britain:Scafell Pike,Cat Bells,Ben Macdui,*Ben Nevis
 What is the smallest country in the world:San Marino,*Vatican City,Iceland,Tuvalu
@@ -62,37 +30,32 @@ In tennis, what piece of fruit is found at the top of the men's Wimbledon trophy
 Who won the FIFA Women's World Cup in 2019:Germany,*USA,Sweden,France
 In bowling, what is the term given for three consecutive strikes:Hattrick,Super strike,A homerun,*A turkey
 How many world titles has Phil Talyor won in darts:*16,2,23,6
+In golf, where does the Masters take place:*Augusta National,Scotland Yard National,Nordea Masters Stockholm,Norwich County
+Who was the only British Prime Minister to be assassinated:Margret Thatcher,*Spencer Perceval,Abraham Lincon,Winston Churchill
+How long does Prime Minister’s Questions last(in minutes:240,45,*30,15
+How many Members of Parliament (MPs) are there:263,451,550,*650
+What is the middle name of Angela Merkel:Henni,Mariette,Henrietta,*Dorothea
+America's Republican Party is commonly referred to as the 'GOP' - what does the GOP stand for:Good is Older than Poolio,*Grand Old Party,Greate Opposite Party,Grand Old Palace
+In which year did Britain originally join the EEC, now known as the European Union:1823,*1973,1949,1845
+Which is NOT one of the six founding members of the European Union:*East Germany,Belgium,France,Netherlands
+What is the name given to the group of people who make sure MPs attend important votes:Whops,*Whips,Dickeys,Mickeys
+Which nuts are used in marzipan:*Almonds,Hazel nuts,Peanuts,Walnus
+What is the most famous Mexican beer:Carlsberg,*Corona,El Birro,MerDon S.
+Which country is the origin of the cocktail Mojito:Chile,Venezuela,Brazil,*Cuba
+What is Japanese sake' made from:Soy beans,Wheat,*Rice,Cane sugar
+Which vitamin is the only one that you will NOT find in an egg:A,D,H,*C
+What is the chemical formula for Table Salt:*NaC1,NaC2,H3oM,So2Fl
+What does IPA stand for:International Prophet Authority,*Indian Pale Ale,International Prospect Agency,International Pornographic Authority
+Which meat is used in Glamorgan sausages:*None,Ham,Cow tail,Lamb
+What ingredient is included in food in a Florentine style:*Spinach,Tomato,Bazil,Red cowl
+Which fish is the main ingredient of Scotch Woodcock:Sea bass,Cod,Salmon,*Anchovy
+What is the capital of Westeros in Game of Thrones:*King’s Landing,King's Take-off,King's Cruize,King's City
+Who presented TV quiz Blockbusters between 1983 and 1995:*Bob Holness,Sherlock Holmes,Aldwin Atternby,Baldwin James
+In Netflix's Tiger King, what is the name of Carole Baskin's second husband who many believe she fed to the tigers:Andrew Spencer,*Don Lewis,Bobby Fisher,John Dee
+In Emmerdale, on New Year's Day in 2004, who died when The Woolpack pub's chimney came crashing down in a storm:*Trisha,Sophia,Andrew,Haley
+In what Netflix series does actress Gillian Anderson play a sex therapist:Breaking Bad,*Sex Education,Better Call Saul,Queens Gambit
+//FORTSÄTT
 
-///// FORTSÄTT NEDAN ////
-
-
-In golf, where does the Masters take place:*Augusta National
->>>>>>> aa
-Who was the only British Prime Minister to be assassinated:*Spencer Perceval - May 1812
-How long does Prime Minister’s Questions last:*30 minutes
-How many Members of Parliament (MPs) are there:*650
-What is the middle name of Angela Merkel:*Dorothea
-America's Republican Party is commonly referred to as the GOP - what does the GOP stand for:*Grand Old Party
-Who is Donald Trump's vice president:*Mike Pence
-In which year did Britain originally join the EEC, now known as the European Union:*1973
-How many of the six founding members of the European Union can you name:*A point for each.Belgium, France, West Germany, Italy, Luxembourg, Netherlands
-What is the name given to the group of people who make sure MPs attend important votes:*Whips
-On what subject was the first referendum in Britain:*Remaining in the EEC (1975)
-Which nuts are used in marzipan:*Almonds
-What is the most famous Mexican beer:*Corona
-Which country is the origin of the cocktail Mojito:*Cuba
-What is Japanese sake made from:*Rice
-Which vitamin is the only one that you will not find in an egg:*Vitamin C
-What is the chemical formula for Table Salt? NaC1
-What does IPA stand for:*Indian Pale Ale
-Which meat is used in Glamorgan sausages:*None, they are made from cheese
-What ingredient is included in food in a Florentine style:*Spinach
-Which fish is the main ingredient of Scotch Woodcock:*Anchovy
-What is the capital of Westeros in Game of Thrones:*King’s Landing
-Who presented TV quiz Blockbusters between 1983 and 1995:*Bob Holness
-In Netflix's Tiger King, what is the name of Carole Baskin's second husband who many believe she fed to the tigers:*Don Lewis
-In Emmerdale, on New Year's Day in 2004, who died when The Woolpack pub's chimney came crashing down in a storm:*Trisha Dingle
-In what Netflix series does actress Gillian Anderson play a sex therapist:*Sex Education
 Who played Queen Elizabeth II in the first two seasons of The Crown:*Claire Foy
 BBC Three series Normal People is based on a book but who is the author:*Sally Rooney
 The six main stars of Friends appeared in all 236 episodes. Who is the next most regular character to appear in the show:*Gunther (151 episodes)
