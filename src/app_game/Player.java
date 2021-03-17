@@ -8,7 +8,7 @@ public class Player extends Person implements Serializable {
 
             // PATHS:
             // change to your local absolutepath [serFile -> StoredPlayers.ser].
-    File playerSerFile = new File("/Users/Robin/Documents/ProgrammeringEC/05- Avancerad Java/InlämningsUppgift/BattleQuizz/BattleQuiz/game_files/StoredPlayers.ser");
+    File playerSerFile = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\StoredPlayers.ser");
 
             // VARIABLES:
     private LinkedList<Player> playerLinkedList;
@@ -79,11 +79,16 @@ public class Player extends Person implements Serializable {
         // KVAR ATT SORTERA EFTER FLEST VINSTER
         // Printing all Players with highest score in top.
         LinkedList<Player> tempListReadAll = readPlayerListFromSer();
-        // SORT LIST WITH HIGHEST SCORE FIRST.... Then Print as Below-ish
+        tempListReadAll.sort(((o1, o2) -> o2.getScore() - o1.getScore()));
 
-        System.out.println(" \tPlayer:\t\t\tEmail:\t\t\t\t\t\tWins:\t\t\tPlayed Games:");
+        System.out.println(String.format("%10s %10s %10s %15s %5s %10s %5s", "Player", "", "Email", "", "Wins", "", "Played Games"));
+        System.out.println(String.format("%s", "-------------------------------------------------------------------------------------------"));
+
+
+
         for (int i = 0; i < tempListReadAll.size(); i++) {
-            System.out.println(i +1 + "\t" +tempListReadAll.get(i).getName() + "\t\t\t"+ tempListReadAll.get(i).geteMail() +"\t\t\t\t\t\t" + tempListReadAll.get(i).getScore() +"\t\t\t" + tempListReadAll.get(i).getPlayed_games() );
+
+            System.out.println(String.format("%10s %10s %10s %10s %5s %10s %5s", tempListReadAll.get(i).getName(), "", tempListReadAll.get(i).geteMail(), "", tempListReadAll.get(i).getScore(), "", tempListReadAll.get(i).getPlayed_games()));
         }
 
     } // NOT COMPLETE
