@@ -7,26 +7,24 @@ import java.util.Scanner;
 public class Game_launch {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        //// IF IO MESSAGE DUE TO SERIALIZATION OCCOURS AFTER DOWNLOAD THIS VERSION DO THIS:
-        //// UNCOMMENT CODE IN BELOW AND COMMENT AWAY THE REST OF MAIN. RUN PROGRAM AND THEN RUN PROGRAM AS NORMAL
 
-
-        // Instances
+        // ------- INSTANCES -------
         GuidePrint guidePrint = new GuidePrint();
         QuestionHandler questionHandler = new QuestionHandler();
         Player player = new Player();
         GameEngine gameEngine = new GameEngine();
 
 
-        //-------------- TEST AREA --------------//
+        // -------------- TEST AREA -------------- //
          // player.testResetPlayerrecordForDevPurposes();
          //questionHandler.resetQuestionsFromTextFile();
-        //-------------- PROGRAM --------------//
+
+        // -------------- PROGRAM -------------- //
 
         guidePrint.battleQuizz();
         guidePrint.mainMenuFull();
 
-        // Main menu:
+        // -------------- Main menu --------------
         String choiceMain;
         Scanner scChoiceMain = new Scanner(System.in);
         do{
@@ -43,14 +41,14 @@ public class Game_launch {
                     guidePrint.mainMenuMini();
                     break;
                 case "3":
-                    ////// Help menu: ///////
+                    // -------------- Help menu --------------
                     guidePrint.helpMenuFull();
                     String choiceHelp;
                     Scanner scChoiceHelp = new Scanner(System.in);
 
                             do {
                                  choiceHelp = scChoiceHelp.nextLine();
-                                /// HELP MENU
+                                // -------------- HELP MENU --------------
                                 switch (choiceHelp) {
                                     case "1":
                                         questionHandler.showAllQuestions();
@@ -73,7 +71,7 @@ public class Game_launch {
                                         guidePrint.helpMenuMini();
                                         break;
                                     case "admin":
-                                        /// ADMIN MENU ///
+                                        // -------------- Admin menu --------------
                                         guidePrint.adminMenuFull();
                                         String choiceAdmin;
                                         Scanner scChoiceAdmin = new Scanner(System.in);

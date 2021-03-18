@@ -5,24 +5,22 @@ import java.io.Serializable;
 
 public abstract class Person implements Serializable {
 
-    // --- VARIABLES ---
+    // ------- VARIABLES -------
     private String name;
     private int age;
     private String eMail;
 
 
-    // --- CONSTRUCTORS ---
-
+    // ------- CONSTRUCTORS -------
     public Person(String name, int age, String eMail){
         this.name = name;
         this.age = age;
         this.eMail = eMail;
     }
-
     public Person(){}
 
 
-    // --- Getters & Setters ---
+    // ------- METHODS -------
     public String getName(){return name;}
 
     public String geteMail() {
