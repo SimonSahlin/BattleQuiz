@@ -78,15 +78,14 @@ public class GameEngine {
                 for (int n = 0; n < 4; n++) {
                     System.out.println(optionLetter++ + ". " + gameQuestions.get(i).options.get(n).replace("*", "")); //Showing optionA, B, C & D
                 }
-                for (int j = 0; j < 1; j++) { //Loops 2 times for every once the upper loop loops.
-                    System.out.println(player1.getName() + " svarar: "); //Prints which player that are gonna answer
-                    //Start timer
-                    startTimerPlayer1();
-                    answerPlayer1.add(scanner.nextLine()); //Waiting for answer and stores it in a LinkedList called "answer".
-                    //End timer
-                    stopTimerPlayer1();
+                //Loops 2 times for every once the upper loop loops.
+                System.out.println(player1.getName() + " svarar: "); //Prints which player that are gonna answer
+                //Start timer
+                startTimerPlayer1();
+                answerPlayer1.add(scanner.nextLine()); //Waiting for answer and stores it in a LinkedList called "answer".
+                //End timer
+                stopTimerPlayer1();
 
-                }
                 for (int m = 0; m < 1; m++) {
                     optionLetter = 'A';
                     System.out.println(((gameQuestions.get(i + 3)).question + "?"));

@@ -19,7 +19,7 @@ public class Game_launch {
 
 
         //-------------- TEST AREA --------------//
-          player.testResetPlayerrecordForDevPurposes();
+         // player.testResetPlayerrecordForDevPurposes();
          //questionHandler.resetQuestionsFromTextFile();
         //-------------- PROGRAM --------------//
 
@@ -37,7 +37,8 @@ public class Game_launch {
                     guidePrint.mainMenuMini();
                     break;
                 case "2":
-                    gameEngine.randomizeQuestions();
+                    ThreadQuestions secondThread = new ThreadQuestions(gameEngine);
+                    secondThread.start();
                     gameEngine.gameProgress();
                     guidePrint.mainMenuMini();
                     break;

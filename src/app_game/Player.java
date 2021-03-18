@@ -81,14 +81,14 @@ public class Player extends Person implements Serializable {
         LinkedList<Player> tempListReadAll = readPlayerListFromSer();
         tempListReadAll.sort(((o1, o2) -> o2.getScore() - o1.getScore()));
 
-        System.out.println(String.format("%10s %10s %10s %15s %5s %10s %5s", "Player", "", "Email", "", "Wins", "", "Played Games"));
+        System.out.println(String.format("%-5s %-25s %-1s %-5s %-15s %-5s","", "Player", "", "Wins", "", "Played Games"));
         System.out.println(String.format("%s", "-------------------------------------------------------------------------------------------"));
 
 
 
         for (int i = 0; i < tempListReadAll.size(); i++) {
 
-            System.out.println(String.format("%10s %10s %10s %10s %5s %10s %5s", tempListReadAll.get(i).getName(), "", tempListReadAll.get(i).geteMail(), "", tempListReadAll.get(i).getScore(), "", tempListReadAll.get(i).getPlayed_games()));
+            System.out.println(String.format("%-5s %-25s %-1s %-5s %-15s %-5s",(i+1)+ ". ", tempListReadAll.get(i).getName(), "", tempListReadAll.get(i).getScore(), "", tempListReadAll.get(i).getPlayed_games()));
         }
 
     } // NOT COMPLETE
