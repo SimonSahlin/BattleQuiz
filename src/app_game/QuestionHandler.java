@@ -8,38 +8,34 @@ import java.util.Scanner;
 
 public class QuestionHandler implements Serializable {
 
-    // PATHS:
-    // change to your local absolutepath [serFile -> q.ser], [pathQuestionTextFile -> QuestionBank.txt].
+    // ------- PATHS -------
     File questions_SerFilePath = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\q.ser");
     String questions_TextFilePath ="C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\QuestionBank_v2.txt";
-                // --- VARIABLES ---
+
+    // ------- VARIABLES -------
     LinkedList<QuestionHandler> questionList;
-
-    String question;
     List<String> options;
+    String question;
 
-    // --- CONSTRUCTORS ---
+
+    // ------- CONSTRUCTORS -------
     public  QuestionHandler(){}
+
     public QuestionHandler(LinkedList questionList){
         this.questionList = questionList;}
+
     public QuestionHandler(String question, List<String> options){
         this.question = question;
         this.options =  options;
     }
 
-    // --- METHODS ---
-
-    //Methods to handle the files
+    // ------- METHODS -------
     public void resetQuestionsFromTextFile() throws IOException {
-        //Method to read txt file and add every question as objects to questionList
-        //Contains the information from QuestionBank.txt - Each line on an Index
         LinkedList<String> linesFromQuestionBank = new LinkedList<>();
-        //List which can hold objects created from QuestionHandler class - Each object on an Index
         LinkedList<QuestionHandler> questionList = new LinkedList<>();
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(questions_TextFilePath));
         bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
-        // bufferedReader.lines().forEach(linesFromQuestionBank::addLast); SAMMA SOM OVAN MEN MED METODREFERENS, OM VI VILL.
 
         for(String line : linesFromQuestionBank){
             String question = (line.substring(0, line.indexOf(":")));
@@ -53,14 +49,13 @@ public class QuestionHandler implements Serializable {
 
     public void writeToSer(LinkedList<QuestionHandler> toStore) throws IOException {
 
-        //Overwrites the info on q.ser with the info sent as a parameter in this method.
-
         FileOutputStream fileOutput = new FileOutputStream(questions_SerFilePath);
         ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 
         objectOutput.writeObject(toStore);
         objectOutput.flush();
         objectOutput.close();
+
     }
 
     public LinkedList<QuestionHandler> readBackSer() throws IOException, ClassNotFoundException {
@@ -72,7 +67,6 @@ public class QuestionHandler implements Serializable {
         return listAfterDeSer.questionList;
     }
 
-    ///////////////////////LIGGER DEN HÄR I RÄTT KLASS?
     public String validateOption(String strOption){
         System.out.println("Is this the correct option? - Answer with 'y' or 'n' ( YES or NO)");
         Scanner scValidate = new Scanner(System.in);
@@ -88,14 +82,11 @@ public class QuestionHandler implements Serializable {
 
     }
 
-    //Methods to handle questions
     public void addQuestion() throws IOException, ClassNotFoundException {
-        // New temp. linkedList to store info from q.ser(readBackser)
         LinkedList<QuestionHandler> tempLinkedList = readBackSer();
 
         LinkedList answerList = new LinkedList();
 
-        // Scanner to insert new question.
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter new Question:");
@@ -125,7 +116,6 @@ public class QuestionHandler implements Serializable {
     }
 
     public void showAllQuestions() throws IOException, ClassNotFoundException {
-        // Printing all questions, one row per question with a numeric list in the eyes of the viewer.
         LinkedList<QuestionHandler> tempListReadAll = readBackSer();
         for (int i = 0; i < tempListReadAll.size(); i++) {
             System.out.println(i +1 + " " +tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
@@ -142,7 +132,6 @@ public class QuestionHandler implements Serializable {
             int NumberToRemove = scRemove.nextInt() - 1;
             tempList.remove(NumberToRemove);
 
-            //Write modified list to ser-file again.
             writeToSer(tempList);
             System.out.println("Successful with removal of question number  " + (NumberToRemove + 1));
         }catch(Exception e){
@@ -154,12 +143,11 @@ public class QuestionHandler implements Serializable {
 
     public void editQuestion() throws IOException, ClassNotFoundException {
         Scanner scEdit = new Scanner(System.in);
-        //1 Read questions from .ser
+
         LinkedList<QuestionHandler> tempList = readBackSer();
         System.out.println("What question do you want to change (number)?");
 
         try {
-            // 2 pick index to edit
             int numberToEdit = scEdit.nextInt() - 1;
             System.out.println("You are about to edit question nr " + (numberToEdit + 1) + ": " +
                     tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options);
@@ -198,7 +186,6 @@ public class QuestionHandler implements Serializable {
             editQuestion();
         }
     }
-
 
 }
 

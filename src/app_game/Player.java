@@ -6,16 +6,15 @@ import java.io.*;
 import java.util.*;
 public class Player extends Person implements Serializable {
 
-            // PATHS:
-            // change to your local absolutepath [serFile -> StoredPlayers.ser].
+    // ------- PATHS -------
     File playerSerFile = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\StoredPlayers.ser");
 
-            // VARIABLES:
+    // ------- VARIABLES -------
     private LinkedList<Player> playerLinkedList;
     private int scoreCounter;
     private int playedGamesCounter;
 
-            // CONSTRUCTORS:
+    // ------- CONSTRUCTORS -------
     public Player() {}
     public Player(LinkedList playerList){
         this.playerLinkedList = playerList;}
@@ -27,8 +26,7 @@ public class Player extends Person implements Serializable {
     }
 
 
-            // --- METHODS ---
-
+    // ------- METHODS -------
     public void removePlayer() throws IOException,ClassNotFoundException {
         Scanner scRemove = new Scanner(System.in);
         LinkedList<Player> tempList = readPlayerListFromSer();
@@ -39,7 +37,6 @@ public class Player extends Person implements Serializable {
             int NumberToRemove = scRemove.nextInt() - 1;
             tempList.remove(NumberToRemove);
 
-            //Write modified list to ser-file again.
             writePlayerListToSer(tempList);
             System.out.println("Successful with removal of Player:  " + (NumberToRemove + 1));
         }catch(Exception e){
@@ -47,9 +44,10 @@ public class Player extends Person implements Serializable {
             removePlayer();
         }
 
-    } // COMPLETE
+    }
+
     public void writePlayerListToSer(LinkedList<Player> toStore) throws IOException {
-        //Overwrites the info on StoredPlayers.ser with the info sent as a parameter in this method.
+
 
         FileOutputStream fileOutput = new FileOutputStream(playerSerFile);
         ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
@@ -57,7 +55,8 @@ public class Player extends Person implements Serializable {
         objectOutput.writeObject(toStore);
         objectOutput.flush();
         objectOutput.close();
-    }// COMPLETE
+    }
+
     public LinkedList<Player> readPlayerListFromSer() throws IOException, ClassNotFoundException {
 
         FileInputStream fileInput = new FileInputStream(playerSerFile);
@@ -67,17 +66,18 @@ public class Player extends Person implements Serializable {
 
         return  listAfterDeSer.playerLinkedList;
 
-    } // COMPLETE
+    }
+
     public void addPlayer(Player player) throws IOException, ClassNotFoundException {
-        // New temporary linkedList to store info from serfile
+
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
         tempLinkedList.add(player);
         writePlayerListToSer(tempLinkedList);
 
-    }       // COMPLETE
+    }
+
     public void showPlayerRecord() throws IOException, ClassNotFoundException {
-        // KVAR ATT SORTERA EFTER FLEST VINSTER
-        // Printing all Players with highest score in top.
+
         LinkedList<Player> tempListReadAll = readPlayerListFromSer();
         tempListReadAll.sort(((o1, o2) -> o2.getScore() - o1.getScore()));
 
@@ -91,12 +91,14 @@ public class Player extends Person implements Serializable {
             System.out.println(String.format("%-5s %-25s %-1s %-5s %-15s %-5s",(i+1)+ ". ", tempListReadAll.get(i).getName(), "", tempListReadAll.get(i).getScore(), "", tempListReadAll.get(i).getPlayed_games()));
         }
 
-    } // NOT COMPLETE
+    }
+
     public void clearPlayerRecord() throws IOException, ClassNotFoundException {
         LinkedList<Player> tempList = readPlayerListFromSer();
         tempList.clear();
         writePlayerListToSer(tempList);
-    } // COMPLETE
+    }
+
     public void addOneScore(Player player) throws IOException, ClassNotFoundException {
         // TA IN LISTA
         // KOLLA MATCHA SPELARE
@@ -117,7 +119,8 @@ public class Player extends Person implements Serializable {
 
         writePlayerListToSer(tempList);
 
-    } // COMPLETE
+    }
+
     public void addOnePlayed_games(Player player) throws IOException, ClassNotFoundException {
         // TA IN LISTA
         // KOLLA MATCHA SPELARE
@@ -137,7 +140,8 @@ public class Player extends Person implements Serializable {
         }
 
         writePlayerListToSer(tempList);
-    } // COMPLETE
+    }
+
     public Player validateIfInTheRecord(Player player) throws IOException, ClassNotFoundException {
 
         LinkedList<Player> tempLinkedList = readPlayerListFromSer();
@@ -155,23 +159,26 @@ public class Player extends Person implements Serializable {
         return player;
 
 
-    } //COMPLETE
+    }
+
     public int getScore() {
         return scoreCounter;
     }
+
     public void setScore(int score) {
         this.scoreCounter = score;
 
     }
+
     public void setPlayed_Games(int playedGamesCounter) {
         this.playedGamesCounter = playedGamesCounter;
     }
+
     public int getPlayed_games() {
         return playedGamesCounter;
     }
 
-
-    ////////// RESETTING PLAYER-SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
+    // ------- RESETTING PLAYER-SER FILE WITH A FEW PLAYERS DURING TESTING PHASE -------
     public void testResetPlayerrecordForDevPurposes() throws IOException, ClassNotFoundException {
         LinkedList<Player> localList = new LinkedList<Player>();
 
@@ -186,5 +193,5 @@ public class Player extends Person implements Serializable {
 
 
     }
-                ////////// RESETTING SER FILE WITH A FEW PLAYERS DUREING TESTING PHASE ////////////
+
 }
