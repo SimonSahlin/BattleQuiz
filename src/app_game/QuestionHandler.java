@@ -11,7 +11,7 @@ public class QuestionHandler implements Serializable {
     // PATHS:
     // change to your local absolutepath [serFile -> q.ser], [pathQuestionTextFile -> QuestionBank.txt].
     File questions_SerFilePath = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\q.ser");
-    String questions_TextFilePath ="C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\QuestionBank.txt";
+    String questions_TextFilePath ="C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\QuestionBank_v2.txt";
                 // --- VARIABLES ---
     LinkedList<QuestionHandler> questionList;
 
