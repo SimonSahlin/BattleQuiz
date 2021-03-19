@@ -2,6 +2,7 @@ package app_game;
 
 public class GuidePrint {
 
+
     //The Battlequiz printout
     public void battleQuizz(){
         System.out.println(

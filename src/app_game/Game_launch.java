@@ -8,11 +8,13 @@ public class Game_launch {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 
+
         // ------- INSTANCES -------
         GuidePrint guidePrint = new GuidePrint();
         QuestionHandler questionHandler = new QuestionHandler();
         Player player = new Player();
-        GameEngine gameEngine = new GameEngine();
+        GameEngine gameEngine = GameEngine.getInstance();
+       // GameEngine gameEngine = new GameEngine();
 
 
         // -------------- TEST AREA -------------- //

@@ -31,9 +31,18 @@ public class GameEngine {
     public int player1Score = 0;
     public int player2Score = 0;
 
-    // ------- CONSTRUCTORS -------
-    public GameEngine() throws IOException, ClassNotFoundException {
+    // ------- test -------
+    private static GameEngine gameEngine;
+    private GameEngine() throws IOException, ClassNotFoundException {};
+    public static GameEngine getInstance() throws IOException, ClassNotFoundException {
+        if (gameEngine == null){
+            gameEngine = new GameEngine();
+        }
+        return gameEngine;
     }
+
+    // ------- CONSTRUCTORS -------
+   // public GameEngine() throws IOException, ClassNotFoundException {             }
 
 
     // ------- METHODS -------
