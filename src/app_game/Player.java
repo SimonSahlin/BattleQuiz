@@ -132,10 +132,8 @@ public class Player extends Person implements Serializable {
         for (int i = 0; i < tempList.size(); i++) {
             tempList.get(i);
             if (tempList.get(i).getName().equals(player.getName())){
-                // System.out.println(tempList.get(i).getPlayed_games());
 
                 tempList.get(i).setPlayed_Games(tempList.get(i).getPlayed_games() +1);
-               // System.out.println(tempList.get(i).getPlayed_games());
             }
         }
 
@@ -180,7 +178,7 @@ public class Player extends Person implements Serializable {
 
     // ------- RESETTING PLAYER-SER FILE WITH A FEW PLAYERS DURING TESTING PHASE -------
     public void testResetPlayerrecordForDevPurposes() throws IOException {
-        LinkedList<Player> localList = new LinkedList<Player>();
+        LinkedList<Player> localList = new LinkedList<>();
 
         localList.add(new Player("Robin",33,"roasd@msn.com", 3,3));
         localList.add(new Player("Kalle",22,"kalle@msn.com", 2,7));
