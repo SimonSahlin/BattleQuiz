@@ -13,15 +13,15 @@ public class GameEngine {
     Player p = new Player();
 
     // ------- VARIABLES -------
-    QuestionHandler questionHandler = new QuestionHandler();
-    LinkedList<QuestionHandler> questionsFromSerFile = questionHandler.readBackSer();
-    LinkedList<QuestionHandler> gameQuestions = new LinkedList();
-    LinkedList<String> answerPlayer1 = new LinkedList();
-    LinkedList<String> answerPlayer2 = new LinkedList();
-    LinkedList<String> cheatSheet = new LinkedList<>();
-    HashMap answerConverter = new HashMap();
-    Player player1;
-    Player player2;
+    private final QuestionHandler questionHandler = new QuestionHandler();
+    private LinkedList<QuestionHandler> questionsFromSerFile = questionHandler.readBackSer();
+    private final LinkedList<QuestionHandler> gameQuestions = new LinkedList();
+    private final LinkedList<String> answerPlayer1 = new LinkedList();
+    private final LinkedList<String> answerPlayer2 = new LinkedList();
+    private final LinkedList<String> cheatSheet = new LinkedList<>();
+    private final HashMap answerConverter = new HashMap();
+    private Player player1;
+    private Player player2;
     private LocalTime startTimePlayer1;
     private LocalTime stopTimePlayer1;
     private long totalTimePlayer1 = 0L;
@@ -33,7 +33,7 @@ public class GameEngine {
 
     // ------- test -------
     private static GameEngine gameEngine;
-    private GameEngine() throws IOException, ClassNotFoundException {};
+    private GameEngine() throws IOException, ClassNotFoundException {}
     public static GameEngine getInstance() throws IOException, ClassNotFoundException {
         if (gameEngine == null){
             gameEngine = new GameEngine();
@@ -183,6 +183,7 @@ public class GameEngine {
 
 
         }else if (player1Score == player2Score){
+            // ALWAYS TRUE, byt ut allt från els if till else -Robin
             System.out.println("Oavgjort tid avgör : ");
             compareResponseTime();
         }else {

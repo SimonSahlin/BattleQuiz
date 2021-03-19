@@ -179,7 +179,7 @@ public class Player extends Person implements Serializable {
     }
 
     // ------- RESETTING PLAYER-SER FILE WITH A FEW PLAYERS DURING TESTING PHASE -------
-    public void testResetPlayerrecordForDevPurposes() throws IOException, ClassNotFoundException {
+    public void testResetPlayerrecordForDevPurposes() throws IOException {
         LinkedList<Player> localList = new LinkedList<Player>();
 
         localList.add(new Player("Robin",33,"roasd@msn.com", 3,3));
