@@ -13,17 +13,21 @@ public class QuestionHandler implements Serializable {
     String questions_TextFilePath ="BattleQuiz/game_files/QuestionBank_v2.txt";
 
     // ------- VARIABLES -------
-    LinkedList<QuestionHandler> questionList;
+    
     List<String> options;
-    String question;
+     String question;
 
 
     // ------- CONSTRUCTORS -------
     public  QuestionHandler(){}
 
-
+/*
     public QuestionHandler(LinkedList questionList){
         this.questionList = questionList;}
+
+ */
+
+
 
     public QuestionHandler(String question, List<String> options){
         this.question = question;
@@ -64,10 +68,12 @@ public class QuestionHandler implements Serializable {
         FileInputStream fileInput = new FileInputStream(questions_SerFilePath);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 
-        questionList = new LinkedList<QuestionHandler>((LinkedList) objectInput.readObject());
+        // ------- VARIABLES -------
+        LinkedList<QuestionHandler> questionList = new LinkedList<QuestionHandler>((LinkedList) objectInput.readObject());
 
         return questionList;
         /*
+
         QuestionHandler listAfterDeSer = new QuestionHandler((LinkedList) objectInput.readObject());
         return listAfterDeSer.questionList;
          */

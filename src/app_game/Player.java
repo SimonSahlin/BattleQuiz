@@ -99,7 +99,7 @@ public class Player extends Person implements Serializable {
         writePlayerListToSer(tempList);
     }
 
-    public void addOneScore(Player player) throws IOException, ClassNotFoundException {
+    public void  addOneScore(Player player) throws IOException, ClassNotFoundException {
         // TA IN LISTA
         // KOLLA MATCHA SPELARE
         // UPPGRADERA SCORE MED 1
