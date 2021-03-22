@@ -15,11 +15,13 @@ public class QuestionHandler implements Serializable {
     // ------- VARIABLES -------
 
     List<String> options;
-     String question;
+    String question;
 
 
     // ------- CONSTRUCTORS -------
     public  QuestionHandler(){}
+
+
     public QuestionHandler(String question, List<String> options){
         this.question = question;
         this.options =  options;
@@ -31,8 +33,7 @@ public class QuestionHandler implements Serializable {
         LinkedList<QuestionHandler> questionList = new LinkedList<>();
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(questions_TextFilePath));
-        bufferedReader.lines().forEach(linesFromQuestionBank::addLast);
-        //bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
+        bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
 
         for(String line : linesFromQuestionBank){
             String question = (line.substring(0, line.indexOf(":")));
@@ -59,10 +60,11 @@ public class QuestionHandler implements Serializable {
 
         FileInputStream fileInput = new FileInputStream(questions_SerFilePath);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-        LinkedList<QuestionHandler> kalle =(new LinkedList<QuestionHandler> objectInput.readObject();
 
-        return kalle;
-        objectInput.close();
+       // questionList = new LinkedList<QuestionHandler>((LinkedList) objectInput.readObject());
+
+        return (LinkedList<QuestionHandler>) objectInput.readObject();
+
     }
 
     public String validateOption(String strOption){
@@ -83,7 +85,7 @@ public class QuestionHandler implements Serializable {
     public void addQuestion() throws IOException, ClassNotFoundException {
         LinkedList<QuestionHandler> tempLinkedList = readBackSer();
 
-        LinkedList<String> answerList = new LinkedList<>();
+        LinkedList answerList = new LinkedList();
 
         Scanner sc = new Scanner(System.in);
 
@@ -151,7 +153,7 @@ public class QuestionHandler implements Serializable {
                     tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options);
 
 
-            LinkedList<String> answerList = new LinkedList<>();
+            LinkedList answerList = new LinkedList();
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter question:");
             String q = sc.nextLine();
