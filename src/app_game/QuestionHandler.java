@@ -13,25 +13,13 @@ public class QuestionHandler implements Serializable {
     String questions_TextFilePath ="BattleQuiz/game_files/QuestionBank_v2.txt";
 
     // ------- VARIABLES -------
-/*
-     LinkedList<QuestionHandler> questionList; // LOKALT I METHODE READ BACK SER ISTÄLLET
 
- */
     List<String> options;
      String question;
 
 
     // ------- CONSTRUCTORS -------
     public  QuestionHandler(){}
-
-/*
-    public QuestionHandler(LinkedList questionList){
-        this.questionList = questionList;}
-
- */
-
-
-
     public QuestionHandler(String question, List<String> options){
         this.question = question;
         this.options =  options;
@@ -43,7 +31,8 @@ public class QuestionHandler implements Serializable {
         LinkedList<QuestionHandler> questionList = new LinkedList<>();
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(questions_TextFilePath));
-        bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
+        bufferedReader.lines().forEach(linesFromQuestionBank::addLast);
+        //bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
 
         for(String line : linesFromQuestionBank){
             String question = (line.substring(0, line.indexOf(":")));
@@ -70,19 +59,10 @@ public class QuestionHandler implements Serializable {
 
         FileInputStream fileInput = new FileInputStream(questions_SerFilePath);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
+        LinkedList<QuestionHandler> kalle =(new LinkedList<QuestionHandler> objectInput.readObject();
 
-        // ------- VARIABLES ------- TIDIGARE EN VARIABEL I KLASSEN
-        /*
-        LinkedList<QuestionHandler> questionList; -> ersätts nedan av ListAfterDeserialization..
-         */
-        LinkedList<QuestionHandler> questionList = new LinkedList<QuestionHandler>((LinkedList) objectInput.readObject());
-
-        return questionList;
-        /*
-
-        QuestionHandler listAfterDeSer = new QuestionHandler((LinkedList) objectInput.readObject());
-        return listAfterDeSer.questionList;
-         */
+        return kalle;
+        objectInput.close();
     }
 
     public String validateOption(String strOption){
@@ -103,7 +83,7 @@ public class QuestionHandler implements Serializable {
     public void addQuestion() throws IOException, ClassNotFoundException {
         LinkedList<QuestionHandler> tempLinkedList = readBackSer();
 
-        LinkedList answerList = new LinkedList();
+        LinkedList<String> answerList = new LinkedList<>();
 
         Scanner sc = new Scanner(System.in);
 
@@ -171,7 +151,7 @@ public class QuestionHandler implements Serializable {
                     tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options);
 
 
-            LinkedList answerList = new LinkedList();
+            LinkedList<String> answerList = new LinkedList<>();
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter question:");
             String q = sc.nextLine();
