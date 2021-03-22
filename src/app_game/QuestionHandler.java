@@ -67,6 +67,10 @@ public class QuestionHandler implements Serializable {
         questionList = new LinkedList<QuestionHandler>((LinkedList) objectInput.readObject());
 
         return questionList;
+        /*
+        QuestionHandler listAfterDeSer = new QuestionHandler((LinkedList) objectInput.readObject());
+        return listAfterDeSer.questionList;
+         */
     }
 
     public String validateOption(String strOption){
