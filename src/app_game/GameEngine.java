@@ -37,8 +37,6 @@ public class GameEngine {
 
 
 
-
-
     // ------- METHODS -------
     public static GameEngine getInstance() throws IOException, ClassNotFoundException {
         if (gameEngine == null){

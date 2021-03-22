@@ -13,7 +13,10 @@ public class QuestionHandler implements Serializable {
     String questions_TextFilePath ="BattleQuiz/game_files/QuestionBank_v2.txt";
 
     // ------- VARIABLES -------
-    
+/*
+     LinkedList<QuestionHandler> questionList; // LOKALT I METHODE READ BACK SER ISTÄLLET
+
+ */
     List<String> options;
      String question;
 
@@ -68,7 +71,10 @@ public class QuestionHandler implements Serializable {
         FileInputStream fileInput = new FileInputStream(questions_SerFilePath);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 
-        // ------- VARIABLES -------
+        // ------- VARIABLES ------- TIDIGARE EN VARIABEL I KLASSEN
+        /*
+        LinkedList<QuestionHandler> questionList; -> ersätts nedan av ListAfterDeserialization..
+         */
         LinkedList<QuestionHandler> questionList = new LinkedList<QuestionHandler>((LinkedList) objectInput.readObject());
 
         return questionList;
