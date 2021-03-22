@@ -19,7 +19,7 @@ public class Game_launch {
 
         // -------------- TEST AREA -------------- //
          // player.testResetPlayerrecordForDevPurposes();
-         //questionHandler.resetQuestionsFromTextFile();
+         //questionHandler.resetQuestionListFromTextFile();
 
         // -------------- PROGRAM -------------- //
 
@@ -69,7 +69,7 @@ public class Game_launch {
                                         guidePrint.helpMenuMini();
                                         break;
                                     case "99":
-                                        questionHandler.resetQuestionsFromTextFile();
+                                        questionHandler.resetQuestionListFromTextFile();
                                         guidePrint.helpMenuMini();
                                         break;
                                     case "admin":

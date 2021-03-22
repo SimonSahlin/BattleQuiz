@@ -28,12 +28,13 @@ public class QuestionHandler implements Serializable {
     }
 
     // ------- METHODS -------
-    public void resetQuestionsFromTextFile() throws IOException {
+    public void resetQuestionListFromTextFile() throws IOException {
         LinkedList<String> linesFromQuestionBank = new LinkedList<>();
         LinkedList<QuestionHandler> questionList = new LinkedList<>();
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(questions_TextFilePath));
-        bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
+        bufferedReader.lines().forEach(linesFromQuestionBank::addLast);
+        //bufferedReader.lines().forEach(line -> linesFromQuestionBank.addLast(line));
 
         for(String line : linesFromQuestionBank){
             String question = (line.substring(0, line.indexOf(":")));
@@ -41,11 +42,11 @@ public class QuestionHandler implements Serializable {
             options.set(0, options.get(0).replaceFirst(":",""));
             questionList.add(new QuestionHandler(question, options));
         }
-        writeToSer(questionList);
+        writeQuestionListToSer(questionList);
         System.out.println("Successfully restored questionbank from txt-file.");
     }
 
-    public void writeToSer(LinkedList<QuestionHandler> toStore) throws IOException {
+    public void writeQuestionListToSer(LinkedList<QuestionHandler> toStore) throws IOException {
 
         FileOutputStream fileOutput = new FileOutputStream(questions_SerFilePath);
         ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
@@ -56,12 +57,11 @@ public class QuestionHandler implements Serializable {
 
     }
 
-    public LinkedList<QuestionHandler> readBackSer() throws IOException, ClassNotFoundException {
+    public LinkedList<QuestionHandler> readQuestionListFromSer() throws IOException, ClassNotFoundException {
 
         FileInputStream fileInput = new FileInputStream(questions_SerFilePath);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 
-       // questionList = new LinkedList<QuestionHandler>((LinkedList) objectInput.readObject());
 
         return (LinkedList<QuestionHandler>) objectInput.readObject();
 
@@ -83,9 +83,9 @@ public class QuestionHandler implements Serializable {
     }
 
     public void addQuestion() throws IOException, ClassNotFoundException {
-        LinkedList<QuestionHandler> tempLinkedList = readBackSer();
+        LinkedList<QuestionHandler> tempLinkedList = readQuestionListFromSer();
 
-        LinkedList answerList = new LinkedList();
+        LinkedList<String> answerList = new LinkedList<>();
 
         Scanner sc = new Scanner(System.in);
 
@@ -110,13 +110,13 @@ public class QuestionHandler implements Serializable {
         tempLinkedList.add(new QuestionHandler(q, answerList));
 
         //Write the modified list back to q.ser.
-        writeToSer(tempLinkedList);
+        writeQuestionListToSer(tempLinkedList);
 
         System.out.println("Question added: " + tempLinkedList.getLast().question + tempLinkedList.getLast().options);
     }
 
     public void showAllQuestions() throws IOException, ClassNotFoundException {
-        LinkedList<QuestionHandler> tempListReadAll = readBackSer();
+        LinkedList<QuestionHandler> tempListReadAll = readQuestionListFromSer();
         for (int i = 0; i < tempListReadAll.size(); i++) {
             System.out.println(i +1 + " " +tempListReadAll.get(i).question + " - " + tempListReadAll.get(i).options);
         }
@@ -124,7 +124,7 @@ public class QuestionHandler implements Serializable {
 
     public void removeQuestion() throws IOException,ClassNotFoundException {
         Scanner scRemove = new Scanner(System.in);
-        LinkedList<QuestionHandler> tempList = readBackSer();
+        LinkedList<QuestionHandler> tempList = readQuestionListFromSer();
 
         System.out.println("Which question do you want to remove? (number from list of questions)");
 
@@ -132,7 +132,7 @@ public class QuestionHandler implements Serializable {
             int NumberToRemove = scRemove.nextInt() - 1;
             tempList.remove(NumberToRemove);
 
-            writeToSer(tempList);
+            writeQuestionListToSer(tempList);
             System.out.println("Successful with removal of question number  " + (NumberToRemove + 1));
         }catch(Exception e){
             System.out.println("Enter a valid number..\n");
@@ -144,7 +144,7 @@ public class QuestionHandler implements Serializable {
     public void editQuestion() throws IOException, ClassNotFoundException {
         Scanner scEdit = new Scanner(System.in);
 
-        LinkedList<QuestionHandler> tempList = readBackSer();
+        LinkedList<QuestionHandler> tempList = readQuestionListFromSer();
         System.out.println("What question do you want to change (number)?");
 
         try {
@@ -153,7 +153,7 @@ public class QuestionHandler implements Serializable {
                     tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options);
 
 
-            LinkedList answerList = new LinkedList();
+            LinkedList<String> answerList = new LinkedList<>();
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter question:");
             String q = sc.nextLine();
@@ -180,7 +180,7 @@ public class QuestionHandler implements Serializable {
 
             // 6 Write modified list to ser-file
             System.out.println("Question number " + (numberToEdit + 1) + " is edited to :" + tempList.get(numberToEdit).question + "? " + tempList.get(numberToEdit).options + ".");
-            writeToSer(tempList);
+            writeQuestionListToSer(tempList);
         }catch (Exception e){
             System.out.println("Enter a valid question number\n");
             editQuestion();

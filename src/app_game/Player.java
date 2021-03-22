@@ -10,14 +10,12 @@ public class Player extends Person implements Serializable {
     File playerSerFile = new File("BattleQuiz/game_files/StoredPlayers.ser");
 
     // ------- VARIABLES -------
-    private LinkedList<Player> playerLinkedList;
     private int scoreCounter;
     private int playedGamesCounter;
 
     // ------- CONSTRUCTORS -------
     public Player() {}
-    public Player(LinkedList playerList){
-        this.playerLinkedList = playerList;}
+
     public Player(String name, int age, String eMail, int scoreCounter, int played_games){
 
         super(name, age, eMail);
@@ -61,10 +59,8 @@ public class Player extends Person implements Serializable {
 
         FileInputStream fileInput = new FileInputStream(playerSerFile);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-        Player listAfterDeSer = new Player((LinkedList) objectInput.readObject());
 
-
-        return  listAfterDeSer.playerLinkedList;
+        return  (LinkedList<Player>) objectInput.readObject();
 
     }
 
@@ -108,7 +104,7 @@ public class Player extends Person implements Serializable {
         LinkedList<Player> tempList = readPlayerListFromSer();
 
         for (int i = 0; i < tempList.size(); i++) {
-            tempList.get(i);
+
             if (tempList.get(i).getName().equals(player.getName())){
                 // System.out.println(tempList.get(i).getScore());
 

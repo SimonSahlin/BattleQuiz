@@ -14,10 +14,10 @@ public class GameEngine {
 
     // ------- VARIABLES -------
     private final QuestionHandler questionHandler = new QuestionHandler();
-    private LinkedList<QuestionHandler> questionsFromSerFile = questionHandler.readBackSer();
-    private final LinkedList<QuestionHandler> gameQuestions = new LinkedList();
-    private final LinkedList<String> answerPlayer1 = new LinkedList();
-    private final LinkedList<String> answerPlayer2 = new LinkedList();
+    private LinkedList<QuestionHandler> questionsFromSerFile = questionHandler.readQuestionListFromSer();
+    private final LinkedList<QuestionHandler> gameQuestions = new LinkedList<>();
+    private final LinkedList<String> answerPlayer1 = new LinkedList<>();
+    private final LinkedList<String> answerPlayer2 = new LinkedList<>();
     private final LinkedList<String> cheatSheet = new LinkedList<>();
     private final HashMap answerConverter = new HashMap();
     private Player player1;
@@ -52,7 +52,7 @@ public class GameEngine {
             questionsFromSerFile.remove(randNr);
             allRandomQuestions -= 1;
         }
-        questionsFromSerFile = questionHandler.readBackSer();
+        questionsFromSerFile = questionHandler.readQuestionListFromSer();
 
     }
 
