@@ -14,7 +14,7 @@ public class Game_launch {
         QuestionHandler questionHandler = new QuestionHandler();
         Player player = new Player();
         GameEngine gameEngine = GameEngine.getInstance();
-       // GameEngine gameEngine = new GameEngine();
+
 
 
         // -------------- TEST AREA -------------- //

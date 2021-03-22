@@ -21,6 +21,7 @@ public class QuestionHandler implements Serializable {
     // ------- CONSTRUCTORS -------
     public  QuestionHandler(){}
 
+
     public QuestionHandler(LinkedList questionList){
         this.questionList = questionList;}
 
@@ -62,9 +63,10 @@ public class QuestionHandler implements Serializable {
 
         FileInputStream fileInput = new FileInputStream(questions_SerFilePath);
         ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-        QuestionHandler listAfterDeSer = new QuestionHandler((LinkedList) objectInput.readObject());
 
-        return listAfterDeSer.questionList;
+        questionList = new LinkedList<QuestionHandler>((LinkedList) objectInput.readObject());
+
+        return questionList;
     }
 
     public String validateOption(String strOption){
@@ -186,6 +188,7 @@ public class QuestionHandler implements Serializable {
             editQuestion();
         }
     }
+
 
 }
 
