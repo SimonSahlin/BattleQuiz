@@ -8,7 +8,6 @@ public class Game_launch {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 
-
         // ------- INSTANCES -------
         GuidePrint guidePrint = new GuidePrint();
         QuestionHandler questionHandler = new QuestionHandler();
@@ -16,20 +15,21 @@ public class Game_launch {
         GameEngine gameEngine = GameEngine.getInstance();
 
 
+        // -------------- TEST AREA --------------
+//          player.testResetPlayerRecordForDevPurposes();
+//          questionHandler.resetQuestionListFromTextFile();
 
-        // -------------- TEST AREA -------------- //
-         // player.testResetPlayerrecordForDevPurposes();
-         //questionHandler.resetQuestionListFromTextFile();
+        // -------------- PROGRAM --------------
 
-        // -------------- PROGRAM -------------- //
-
-        guidePrint.battleQuizz();
+        guidePrint.battleQuizLogo();
         guidePrint.mainMenuFull();
 
-        // -------------- Main menu --------------
         String choiceMain;
         Scanner scChoiceMain = new Scanner(System.in);
+
+        // -------------- Menu --------------
         do{
+            // -------------- Main menu --------------
             choiceMain = scChoiceMain.nextLine();
             switch (choiceMain){
                 case "1":
@@ -47,7 +47,6 @@ public class Game_launch {
                     guidePrint.helpMenuFull();
                     String choiceHelp;
                     Scanner scChoiceHelp = new Scanner(System.in);
-
                             do {
                                  choiceHelp = scChoiceHelp.nextLine();
                                 // -------------- HELP MENU --------------

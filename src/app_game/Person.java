@@ -23,7 +23,7 @@ public abstract class Person implements Serializable {
     // ------- METHODS -------
     public String getName(){return name;}
 
-    public String geteMail() {
+    public String getEmail() {
         return eMail;
     }
 }

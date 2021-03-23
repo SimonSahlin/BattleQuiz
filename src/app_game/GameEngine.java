@@ -31,10 +31,9 @@ public class GameEngine {
     public int player1CorrectAnswers = 0;
     public int player2CorrectAnswers = 0;
     private static GameEngine gameEngine;
+
     // ------- CONSTRUCTORS -------
-
     private GameEngine() throws IOException, ClassNotFoundException {}
-
 
 
     // ------- METHODS -------
@@ -44,6 +43,7 @@ public class GameEngine {
         }
         return gameEngine;
     }
+
     public void randomizeQuestions() throws IOException, ClassNotFoundException {
         int allRandomQuestions = questionsFromSerFile.size();
         for (int i = 0; i < 6; i++) {
@@ -57,54 +57,52 @@ public class GameEngine {
     }
 
     public void gameProgress() throws IOException, ClassNotFoundException {
-        String restart= "Y";
-        Scanner scanner = new Scanner(System.in);
+        String restart = "Y";
+        Scanner scPlayerInput = new Scanner(System.in);
 
         System.out.println("Enter info about player 1: \n");
         player1 = player.validateIfInTheRecord(createNewPlayer());
-        System.out.println("Enter info about player 2: \n");
+        System.out.println("\nEnter info about player 2: \n");
         player2 = player.validateIfInTheRecord(createNewPlayer());
 
         while ( restart.equals("Y")) {
 
             for (int i = 0; i < 3; i++) {
                 char optionLetter = 'A';
-                System.out.println("Här kommer fråga " + (i + 1));
+                System.out.println("Here's question " + (i + 1) +"\n");
                 System.out.println(((gameQuestions.get(i)).question + "?"));
                 for (int n = 0; n < 4; n++) {
                     System.out.println(optionLetter++ + ". " + gameQuestions.get(i).options.get(n).replace("*", ""));
                 }
-                System.out.println(player1.getName() + " svarar: ");
+                System.out.println("\n" + player1.getName() + " answers: ");
                 startTimerPlayer1();
-                answerPlayer1.add(scanner.nextLine().toUpperCase());
+                answerPlayer1.add(scPlayerInput.nextLine().toUpperCase());
                 stopTimerPlayer1();
 
 
                 optionLetter = 'A';
-                System.out.println(((gameQuestions.get(i + 3)).question + "?"));
+                System.out.println("\n" + ((gameQuestions.get(i + 3)).question + "?"));
                 for (int k = 0; k < 4; k++) {
                     System.out.println(optionLetter++ + ". " + gameQuestions.get(i + 3).options.get(k).replace("*", ""));
                 }
-                System.out.println(player2.getName() + " svarar: ");
+                System.out.println("\n" + player2.getName() + " answers: ");
                 startTimerPlayer2();
-                answerPlayer2.add(scanner.nextLine().toUpperCase());
+                answerPlayer2.add(scPlayerInput.nextLine().toUpperCase());
                 stopTimerPlayer2();
 
             }
 
-            System.out.println(player1.getName() + ": " + answerPlayer1 + "\n" + player2.getName() + ": " + answerPlayer2);
-
             trackScore();
-            System.out.println("Rätt svar - " + player1.getName() + "  : [ " + cheatSheet.get(0) + " " + cheatSheet.get(1) + " " + cheatSheet.get(2) + " ] " + "\nRätt svar - " +player2.getName() + " [ " + cheatSheet.get(3) + " " + cheatSheet.get(4) + " " + cheatSheet.get(5) + " ]");
-            System.out.println(player1CorrectAnswers + " " + player2CorrectAnswers);
-            System.out.println("vunna matcher: " + player1.getScore() + "- " +  player2.getScore());
+
+            //System.out.println("Rätt svar - " + player1.getName() + "  : [ " + cheatSheet.get(0) + " " + cheatSheet.get(1) + " " + cheatSheet.get(2) + " ] " + "\nRätt svar - " +player2.getName() + " [ " + cheatSheet.get(3) + " " + cheatSheet.get(4) + " " + cheatSheet.get(5) + " ]");
+
             reloadGameData();
 
             player.addOnePlayed_games(player1);
             player.addOnePlayed_games(player2);
 
             System.out.println("Play again ? [Y / N]");
-            restart = scanner.nextLine().toUpperCase();
+            restart = scPlayerInput.nextLine().toUpperCase();
         }
     }
 
@@ -124,14 +122,14 @@ public class GameEngine {
         String name = "";
         String eMail = "";
 
-        Scanner scan = new Scanner(System.in);
+        Scanner scPlayerInformation = new Scanner(System.in);
         try {
             System.out.println("Type in player name: ");
-            name = scan.next();
+            name = scPlayerInformation.next();
             System.out.println("What's your age, " + name + "?");
-            age = scan.nextInt();
+            age = scPlayerInformation.nextInt();
             System.out.println("Type in your email " + name + ": ");
-            eMail = scan.next();
+            eMail = scPlayerInformation.next();
         }catch(Exception e){
             System.out.println("You need to type in your age correctly.");
             createNewPlayer();
@@ -166,23 +164,24 @@ public class GameEngine {
                 player2CorrectAnswers += 1;
             }
         }
+        System.out.println("\n" + player1.getName() + " scored " + player1CorrectAnswers + " points" + "\n" + player2.getName() + " scored " + player2CorrectAnswers + " points");
         if(player1CorrectAnswers > player2CorrectAnswers){
 
             player1.setScore(player1.getScore() + 1);
-            System.out.println(player1.getName() + " wins:  " + player1.getScore() );
+            System.out.println(player1.getName() + " wins!");
 
             player.addOneScore(player1);
 
         }else if ( player1CorrectAnswers < player2CorrectAnswers){
             player2.setScore(player2.getScore() + 1);
-            System.out.println(player2.getName() + " wins:  " + player2.getScore() );
+            System.out.println(player2.getName() + " wins!");
 
             player.addOneScore(player2);
 
 
-        }else {
-            // Equal corect answers.
-            System.out.println("Oavgjort tid avgör : ");
+        }else if (player1CorrectAnswers == player2CorrectAnswers){
+            // Equal correct answers.
+            System.out.println("The score is tied, comparing answer time...");
             compareResponseTime();
         }
         answerPlayer1.clear();
@@ -215,14 +214,14 @@ public class GameEngine {
 
     public void compareResponseTime() throws IOException, ClassNotFoundException {
         if (totalTimePlayer1 < totalTimePlayer2) {
-            System.out.println(player1.getName() + " svarade " + (totalTimePlayer2 - totalTimePlayer1) + " sek snabbare än " + player2.getName() + " och vinner matchen!");
+            System.out.println(player1.getName() + " answered " + (totalTimePlayer2 - totalTimePlayer1) + " sec faster than " + player2.getName() + " and wins the match!");
            player1.setScore(player1.getScore()+1);
 
             player.addOneScore(player1);
 
 
         } else {
-            System.out.println(player2.getName() + " var snabbast och svarade " + (totalTimePlayer1 - totalTimePlayer2) + " sek snabbare än " + player1.getName() + " och vinner matchen!");
+            System.out.println(player2.getName() + " answered " + (totalTimePlayer1 - totalTimePlayer2) + " sec faster than " + player1.getName() + " and wins the match!");
             player2.setScore(player2.getScore()+1);
 
             player.addOneScore(player2);

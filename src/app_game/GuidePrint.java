@@ -4,7 +4,7 @@ public class GuidePrint {
 
 
     //The Battlequiz printout
-    public void battleQuizz(){
+    public void battleQuizLogo(){
         System.out.println(
                 "  ______   __  __   ______       ____     ___       ______   ______   __       ______     ____      __  __   ____   _____      \n" +
                         " /_  __/  / / / /  / ____/      / __ )   /   |     /_  __/  /_  __/  / /      / ____/    / __ \\    / / / /  /  _/  /__  /      \n" +
@@ -62,8 +62,9 @@ public class GuidePrint {
         );
 
     }
+
+    //Menu at first entry of Admin PlayerList Manu
     public void adminMenuFull(){
-        //Menu at first entry of Admin PlayerList Manu
         System.out.println(
                 "   ||======================================|| \n" +
                         "   ||   > > ADMIN PLAYER RECORD MENU  < <  || \n" +
@@ -74,8 +75,9 @@ public class GuidePrint {
                         "   ||======================================|| \n");
 
     }
+
+    // Mini menu for choices down the road in the program
     public void adminMenuMini(){
-        // Mini menu for choices down the road in the program
         System.out.println(
                 "\n" +
                         "   ||========================================================================================||\n" +
