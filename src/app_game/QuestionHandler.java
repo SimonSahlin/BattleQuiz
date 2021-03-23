@@ -9,18 +9,15 @@ import java.util.Scanner;
 public class QuestionHandler implements Serializable {
 
     // ------- PATHS -------
-    File questions_SerFilePath = new File("BattleQuiz/game_files/q.ser");
-    String questions_TextFilePath ="BattleQuiz/game_files/QuestionBank_v2.txt";
+    File questions_SerFilePath = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\q.ser");
+    String questions_TextFilePath ="C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\QuestionBank_v2.txt";
 
     // ------- VARIABLES -------
-
-    List<String> options;
     String question;
-
+    List<String> options;
 
     // ------- CONSTRUCTORS -------
     public  QuestionHandler(){}
-
 
     public QuestionHandler(String question, List<String> options){
         this.question = question;
@@ -28,6 +25,7 @@ public class QuestionHandler implements Serializable {
     }
 
     // ------- METHODS -------
+
     public void resetQuestionListFromTextFile() throws IOException {
         LinkedList<String> linesFromQuestionBank = new LinkedList<>();
         LinkedList<QuestionHandler> questionList = new LinkedList<>();
@@ -85,29 +83,29 @@ public class QuestionHandler implements Serializable {
     public void addQuestion() throws IOException, ClassNotFoundException {
         LinkedList<QuestionHandler> tempLinkedList = readQuestionListFromSer();
 
-        LinkedList<String> answerList = new LinkedList<>();
+        LinkedList<String> availableOptions = new LinkedList<>();
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scQuestionInformation = new Scanner(System.in);
 
         System.out.println("Enter new Question:");
-        String q = sc.nextLine();
+        String questionText = scQuestionInformation.nextLine();
         System.out.println("Enter answer A:");
-        String answer1 = validateOption(sc.nextLine().toLowerCase().trim());
+        String option1 = validateOption(scQuestionInformation.nextLine().toLowerCase().trim());
         System.out.println("Enter answer B:");
-        String answer2 = validateOption(sc.nextLine().toLowerCase().trim());
+        String option2 = validateOption(scQuestionInformation.nextLine().toLowerCase().trim());
         System.out.println("Enter answer C:");
-        String answer3 = validateOption(sc.nextLine().toLowerCase().trim());
+        String option3 = validateOption(scQuestionInformation.nextLine().toLowerCase().trim());
         System.out.println("Enter answer D:");
-        String answer4 = validateOption(sc.nextLine().toLowerCase().trim());
+        String option4 = validateOption(scQuestionInformation.nextLine().toLowerCase().trim());
 
         // adding answers to list
-        answerList.add(answer1);
-        answerList.add(answer2);
-        answerList.add(answer3);
-        answerList.add(answer4);
+        availableOptions.add(option1);
+        availableOptions.add(option2);
+        availableOptions.add(option3);
+        availableOptions.add(option4);
 
         // Add the new question to templinkedlist
-        tempLinkedList.add(new QuestionHandler(q, answerList));
+        tempLinkedList.add(new QuestionHandler(questionText, availableOptions));
 
         //Write the modified list back to q.ser.
         writeQuestionListToSer(tempLinkedList);
@@ -186,7 +184,6 @@ public class QuestionHandler implements Serializable {
             editQuestion();
         }
     }
-
 
 }
 
