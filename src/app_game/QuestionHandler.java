@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class QuestionHandler implements Serializable {
 
     // ------- PATHS -------
-    File questions_SerFilePath = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\q.ser");
+    File questions_SerFilePath = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\Questionbank.ser");
     String questions_TextFilePath ="C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\QuestionBank_v2.txt";
 
     // ------- VARIABLES -------
@@ -107,7 +107,7 @@ public class QuestionHandler implements Serializable {
         // Add the new question to templinkedlist
         tempLinkedList.add(new QuestionHandler(questionText, availableOptions));
 
-        //Write the modified list back to q.ser.
+        //Write the modified list back to Questionbank.ser.
         writeQuestionListToSer(tempLinkedList);
 
         System.out.println("Question added: " + tempLinkedList.getLast().question + tempLinkedList.getLast().options);
