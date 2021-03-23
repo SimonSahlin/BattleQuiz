@@ -19,7 +19,7 @@ public class GameEngine {
     private final LinkedList<String> answerPlayer1 = new LinkedList<>();
     private final LinkedList<String> answerPlayer2 = new LinkedList<>();
     private final LinkedList<String> cheatSheet = new LinkedList<>();
-    private final HashMap answerConverter = new HashMap();
+    private final HashMap<Integer, String> answerConverter = new HashMap<>();
     private Player player1;
     private Player player2;
     private LocalTime startTimePlayer1;
@@ -147,7 +147,7 @@ public class GameEngine {
         for (int i = 0; i < gameQuestions.size(); i++) {
             for (int j = 0; j < gameQuestions.get(i).options.size(); j++) {
                 if (gameQuestions.get(i).options.get(j).contains("*")) {
-                    String value = answerConverter.get(j).toString();
+                    String value = answerConverter.get(j);
                     cheatSheet.add(value);
                 }
             }
@@ -179,7 +179,7 @@ public class GameEngine {
             player.addOneScore(player2);
 
 
-        }else if (player1CorrectAnswers == player2CorrectAnswers){
+        }else {
             // Equal correct answers.
             System.out.println("The score is tied, comparing answer time...");
             compareResponseTime();
