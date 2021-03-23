@@ -42,72 +42,55 @@ public class Game_launch {
                     gameEngine.gameProgress();
                     guidePrint.mainMenuMini();
                     break;
-                case "3":
-                    // -------------- Help menu --------------
-                    guidePrint.helpMenuFull();
-                    String choiceHelp;
-                    Scanner scChoiceHelp = new Scanner(System.in);
-                            do {
-                                 choiceHelp = scChoiceHelp.nextLine();
-                                // -------------- HELP MENU --------------
-                                switch (choiceHelp) {
-                                    case "1":
-                                        questionHandler.showAllQuestions();
-                                        guidePrint.helpMenuMini();
-                                        break;
-                                    case "2":
-                                        questionHandler.addQuestion();
-                                        guidePrint.helpMenuMini();
-                                        break;
-                                    case "3":
-                                        questionHandler.removeQuestion();
-                                        guidePrint.helpMenuMini();
-                                        break;
-                                    case "4":
-                                        questionHandler.editQuestion();
-                                        guidePrint.helpMenuMini();
-                                        break;
-                                    case "99":
-                                        questionHandler.resetQuestionListFromTextFile();
-                                        guidePrint.helpMenuMini();
-                                        break;
-                                    case "admin":
-                                        // -------------- Admin menu --------------
-                                        guidePrint.adminMenuFull();
-                                        String choiceAdmin;
-                                        Scanner scChoiceAdmin = new Scanner(System.in);
-                                                do {
-                                                    choiceAdmin = scChoiceAdmin.nextLine();
-                                                    switch (choiceAdmin) {
-                                                        case "1":
-                                                            player.showPlayerRecord();
-                                                            guidePrint.adminMenuMini();
-                                                            break;
-                                                        case "2":
-                                                            player.removePlayer();
-                                                            guidePrint.adminMenuMini();
-                                                            break;
-                                                        case "3":
-                                                            player.clearPlayerRecord();
-                                                            guidePrint.adminMenuMini();
-                                                            break;
-                                                        case "0":
-                                                            guidePrint.helpMenuFull();
-                                                            break;
-                                                        default:
-                                                            System.out.println("Wrong entry, try again: ");
-                                                    }
-                                                } while (!choiceAdmin.equals("0"));
-                                        break;
-                                    case "0":
-                                        guidePrint.mainMenuFull();
-                                        break;
-                                    default:
-                                        System.out.println("Wrong entry, try again:");
-                                        break;
-                                }
-                            }while(!choiceHelp.equals("0"));
-                    break;
+                case "admin":
+                      // -------------- Admin menu --------------
+                        guidePrint.adminMenuFull();
+                        String choiceAdmin;
+                        Scanner scChoiceAdmin = new Scanner(System.in);
+                                do {
+                                    choiceAdmin = scChoiceAdmin.nextLine();
+                                    switch (choiceAdmin) {
+                                        case "1":
+                                            player.showPlayerRecord();
+                                            guidePrint.adminMenuMini();
+                                            break;
+                                        case "2":
+                                            player.removePlayer();
+                                            guidePrint.adminMenuMini();
+                                            break;
+                                        case "3":
+                                            player.clearPlayerRecord();
+                                            guidePrint.adminMenuMini();
+                                            break;
+                                        case "4":
+                                            questionHandler.showAllQuestions();
+                                            guidePrint.adminMenuMini();
+                                            break;
+                                        case "5":
+                                            questionHandler.addQuestion();
+                                            guidePrint.adminMenuMini();
+                                            break;
+                                        case "6":
+                                            questionHandler.removeQuestion();
+                                            guidePrint.adminMenuMini();
+                                            break;
+                                        case "7":
+                                            questionHandler.editQuestion();
+                                            guidePrint.adminMenuMini();
+                                            break;
+                                        case "8":
+                                            questionHandler.resetQuestionListFromTextFile();
+                                            guidePrint.adminMenuMini();
+                                            break;
+                                        case "0":
+                                            guidePrint.mainMenuFull();
+                                            break;
+                                        default:
+                                            System.out.println("Wrong entry, try again: ");
+                                    }
+                                } while (!choiceAdmin.equals("0"));
+
+    break;
                 case "0":
                     break;
                 default:
