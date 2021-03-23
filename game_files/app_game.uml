@@ -18,8 +18,10 @@
       <point x="0.0" y="38.0" />
     </edge>
   </edges>
+
   <settings layout="Hierarchic Group" zoom="1.0" x="879.5" y="612.0" />
   <SelectedNodes />
+
   <Categories>
     <Category>Methods</Category>
   </Categories>
