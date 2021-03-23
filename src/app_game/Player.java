@@ -7,7 +7,7 @@ import java.util.*;
 public class Player extends Person implements Serializable {
 
     // ------- PATHS -------
-    File playerSerFile = new File("BattleQuiz/game_files/StoredPlayers.ser");
+    File playerSerFile = new File("C:\\Users\\Adam-\\IdeaProjects\\BattleQuiz\\BattleQuiz\\game_files\\StoredPlayers.ser");
 
     // ------- VARIABLES -------
     private int scoreCounter;
