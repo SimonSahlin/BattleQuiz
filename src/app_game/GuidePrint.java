@@ -37,9 +37,6 @@ public class GuidePrint {
         );
     }
 
-
-
-
     //Menu at first entry of Admin Menu
     public void adminMenuFull(){
         System.out.println(

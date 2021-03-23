@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>app_game</OriginalElement>
+  <nodes>
+    <node x="73.0" y="0.0">app_game.Person</node>
+    <node x="0.0" y="126.0">app_game.Player</node>
+    <node x="0.0" y="511.0">app_game.QuestionHandler</node>
+    <node x="406.0" y="511.0">app_game.GuidePrint</node>
+    <node x="331.0" y="0.0">app_game.GameEngine</node>
+    <node x="620.0" y="511.0">app_game.ThreadQuestions</node>
+    <node x="0.0" y="764.0">app_game.Game_launch</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="app_game.Player" target="app_game.Person">
+      <point x="0.0" y="-170.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="394.0" y="409.0" />
+  <SelectedNodes>
+    <node>app_game.Person</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
